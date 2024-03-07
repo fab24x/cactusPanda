@@ -1,0 +1,43 @@
+
+.intro{
+    background-image: url('../../assets/fondo1.png');
+    background-size: cover;
+    height: 90vh;
+    .h1{
+        font-size: 5rem;
+    }
+}
+
+.que-ofrecemos{
+    height: 90vh;
+    background-color: #001904;
+
+    .h1{
+        font-size: 4rem;
+    }
+
+    .imagen{
+        height: 200px;
+    }
+    .image_cards{
+        width: 100%;
+        
+        .image_card{
+            width: 20%;
+        }
+    }
+
+}
+
+.video-section{
+    background-image: url('../../assets/fondo3.png');
+    height: 90vh;
+    background-size: cover;
+}
+
+.preguntas-frecuentes{
+    background-image: url('../../assets/fondo4.png');
+    height: 80vh;
+    background-size: cover;
+}
+
