@@ -1,10 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
+import { LoginPageComponent } from './login-page/login-page.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
+
+const routes: Routes = [
+  {path: '', component: LandingPageComponent},
+  {path: 'login', component: LoginPageComponent}
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {useHash: true})], //https://medium.com/@jsmuster/enrutamiento-de-angular-en-5-minutos-spanish-dfbadc2c1cb7
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
