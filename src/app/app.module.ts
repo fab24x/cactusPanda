@@ -8,13 +8,23 @@ import { HeaderComponent } from './header/header.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RouterModule } from '@angular/router';
+import { RegisterComponent } from './register/register.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { HistorialUsuariosComponent } from './historial-usuarios/historial-usuarios.component';
+import { SoporteTecnicoComponent } from './soporte-tecnico/soporte-tecnico.component';
+import { GestionUsuariosComponent } from './gestion-usuarios/gestion-usuarios.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     LandingPageComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    RegisterComponent,
+    AdminPanelComponent,
+    //HistorialUsuariosComponent,
+    SoporteTecnicoComponent,
+    // GestionUsuariosComponent
   ],
   imports: [
     BrowserModule,
