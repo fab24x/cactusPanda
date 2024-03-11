@@ -13,6 +13,8 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { HistorialUsuariosComponent } from './historial-usuarios/historial-usuarios.component';
 import { SoporteTecnicoComponent } from './soporte-tecnico/soporte-tecnico.component';
 import { GestionUsuariosComponent } from './gestion-usuarios/gestion-usuarios.component';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -24,13 +26,15 @@ import { GestionUsuariosComponent } from './gestion-usuarios/gestion-usuarios.co
     AdminPanelComponent,
     //HistorialUsuariosComponent,
     SoporteTecnicoComponent,
-    // GestionUsuariosComponent
+    GestionUsuariosComponent
   ],
   imports: [
     BrowserModule,
     NgbModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatDialogModule,
+    ModalModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
