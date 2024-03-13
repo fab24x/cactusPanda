@@ -38,8 +38,7 @@
             ],
             "styles": [
               "src/styles.scss",
-              "node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
-              "node_modules/ngx-bootstrap/modal/bs-modal.css"
+              "node_modules/ngx-bootstrap/datepicker/bs-datepicker.css"
             ],
             "scripts": []
           },

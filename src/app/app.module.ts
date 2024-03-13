@@ -26,7 +26,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     AdminPanelComponent,
     //HistorialUsuariosComponent,
     SoporteTecnicoComponent,
-    GestionUsuariosComponent
+    // GestionUsuariosComponent
   ],
   imports: [
     BrowserModule,
