@@ -14,4 +14,5 @@ export class RegisterComponent {
 
 	model!: NgbDateStruct;
 	date!: { year: number; month: number };
+
 }

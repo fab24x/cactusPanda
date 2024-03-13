@@ -5,6 +5,9 @@ $color-text: #ffffff;
 $color-label: #b1b1b1;
 $color-button: #ff3b00;
 .login-container {
+  background-image: url('../../assets/fondo5.png');
+  background-size: cover;
+
   height: 94vh;
   .login-card {
     max-width: 400px;

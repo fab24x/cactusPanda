@@ -1,22 +1,22 @@
-<div class="register-container">
-    <div class="register-card">
-      <h2>Registro</h2>
+<div class="register-container d-flex justify-content-center align-items-center bg-black w-100 vh-100">
+    <div class="register-card w-25 bg-dark p-3 rounded shadow-lg">
+      <h2 class="text-white text-center mb-4 h2">¡Registrate en <span class="text-white">Cactus</span><span class="text-primary">Panda</span>!</h2>
       <form>
         <!-- Campos de registro como nombre de usuario, email, contraseña, etc. -->
-        <div class="mb-2 w-100">
-          <label for="username" class="text-white mb-1 w-100">Nombre de Usuario:</label>
+        <div class="mb-2">
+          <label for="username" class="text-white mb-1 w-100"><i class="bi bi-person-fill"></i> Nombre de Usuario:</label>
           <input type="text" id="username" class="form-control w-100 mb-3" placeholder="Elige un nombre de usuario" required>
         </div>
         <div class="mb-2 w-100">
-          <label for="email" class="text-white mb-1"><i class="bi bi-crosshair"></i>Email:</label>
+          <label for="email" class="text-white mb-1"><i class="bi bi-envelope-fill"></i> Email:</label>
           <input type="email" id="email" class="form-control w-100 mb-3" placeholder="Ingresa tu email" required>
         </div>
         <div class="form-group mb-2 w-100">
-          <label for="password" class="text-white mb-1">Contraseña:</label>
+          <label for="password" class="text-white mb-1"><i class="bi bi-lock-fill"></i> Contraseña:</label>
           <input type="password" id="password" class="form-control w-100 mb-3" placeholder="Crea una contraseña" required>
         </div>
         <div class="form-group mb-2 w-100">
-          <label for="password" class="text-white mb-1">Fecha de nacimiento:</label>
+          <label for="password" class="text-white mb-1"><i class="bi bi-calendar-fill"></i> Fecha de nacimiento:</label>
           <div class="input-group">
             <input
               class="form-control"
@@ -24,12 +24,13 @@
               name="dp"
               [(ngModel)]="model"
               ngbDatepicker
+              required
               #d="ngbDatepicker"
             />
-            <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()" type="button"></button>
+            <button class="btn btn-outline-secondary bi bi-calendar3" id="date-button" (click)="d.toggle()" type="button"></button>
           </div>
         </div>
-        <button type="submit" class="btn btn-primary w-100">Registrarse</button>
+        <input type="submit" class="btn btn-primary w-100 mt-4" value="Registrarse"/>
       </form>
     </div>
   </div>

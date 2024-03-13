@@ -24,10 +24,6 @@
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.2",
     "bootstrap-icons": "^1.11.3",
-<<<<<<< HEAD
-=======
-    "ngx-bootstrap": "^12.0.0",
->>>>>>> f9b297a02c0251e4026cbac0d7e767ab41398942
     "popper.js": "^1.16.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
