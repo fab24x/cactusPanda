@@ -16,6 +16,7 @@ import { GestionUsuariosComponent } from './gestion-usuarios/gestion-usuarios.co
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ModalModule } from 'ngx-bootstrap/modal';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +28,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     //HistorialUsuariosComponent,
     SoporteTecnicoComponent,
     // GestionUsuariosComponent
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
