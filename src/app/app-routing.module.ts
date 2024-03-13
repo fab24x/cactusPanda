@@ -15,4 +15,6 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes, {useHash: true})], //https://medium.com/@jsmuster/enrutamiento-de-angular-en-5-minutos-spanish-dfbadc2c1cb7
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+
+}

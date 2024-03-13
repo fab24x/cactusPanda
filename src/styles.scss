@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* Importing Bootstrap SCSS file. */
+<<<<<<< HEAD
 @import 'bootstrap/scss/bootstrap';
 
 $light-green: #90EE90;
@@ -8,3 +9,7 @@ $light-green: #90EE90;
 .text-light-green{
     color: $light-green;
 }
+=======
+@import '../node_modules/bootstrap/scss/bootstrap';
+@import '../node_modules/bootstrap-icons/font/bootstrap-icons.css'
+>>>>>>> f9b297a02c0251e4026cbac0d7e767ab41398942
