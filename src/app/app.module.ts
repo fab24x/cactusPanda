@@ -9,6 +9,13 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RouterModule } from '@angular/router';
 import { RegisterComponent } from './register/register.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { HistorialUsuariosComponent } from './historial-usuarios/historial-usuarios.component';
+import { SoporteTecnicoComponent } from './soporte-tecnico/soporte-tecnico.component';
+import { GestionUsuariosComponent } from './gestion-usuarios/gestion-usuarios.component';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { ModalModule } from 'ngx-bootstrap/modal';
+
 
 @NgModule({
   declarations: [
@@ -16,13 +23,20 @@ import { RegisterComponent } from './register/register.component';
     HeaderComponent,
     LandingPageComponent,
     LoginPageComponent,
+    RegisterComponent,
+    AdminPanelComponent,
+    //HistorialUsuariosComponent,
+    SoporteTecnicoComponent,
+    // GestionUsuariosComponent
     RegisterComponent
   ],
   imports: [
     BrowserModule,
     NgbModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatDialogModule,
+    ModalModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

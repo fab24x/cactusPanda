@@ -1,0 +1,23 @@
+.admin-panel-section{
+    height: 94vh;
+}
+
+.admin-cards{
+    a{
+        height: 319px;
+    }
+
+    #admin-panel-1,#admin-panel-2{
+        width: 48%;
+    }
+
+    #admin-panel-1{
+        background-image: url('../../assets/panel-admin-1.png');
+    }
+    #admin-panel-2{
+        background-image: url('../../assets/panel-admin-2.png');
+    }
+    #admin-panel-3{
+        background-image: url('../../assets/panel-admin-3.png');
+    }
+}
