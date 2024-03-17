@@ -25,6 +25,7 @@ import { FooterComponent } from './footer/footer.component';
     LandingPageComponent,
     LoginPageComponent,
     FooterComponent,
+    AdminPanelComponent
   ],
   imports: [
     BrowserModule,
