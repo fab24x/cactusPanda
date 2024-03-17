@@ -3,6 +3,7 @@ import { BsModalService, BsModalRef, ModalOptions} from 'ngx-bootstrap/modal';
 import { DecimalPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NgbPaginationModule, NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 
 
@@ -102,8 +103,8 @@ export class GestionUsuariosComponent {
     this.refreshUsuarios();
   }
 
-  openModal(template: TemplateRef<any>) {
-    const config: ModalOptions = { class: 'modal-sm' };
-    this.modalRef = this.modalService.show(template, config);
+  openModal(template: TemplateRef<any>, usuario: any) {
+    this.modalRef = this.modalService.show(template, { class: 'modal-lg', initialState: { usuario } });
   }
+  
 }

@@ -2,7 +2,7 @@
 <section class="w-100 h-100 admin-panel-section d-flex flex-column align-items-center justify-content-around gap-5">
     <h2 class="h2 fw-bold text-center">¡Bienvenido {{nombre}}!</h2>
     
-    <button class="btn btn-primary" (click)="openModal(template)">Open Modal</button>
+    
     <div class="w-50 h-100">
         <table class="table table-striped">
             <thead>
@@ -11,6 +11,7 @@
                     <th scope="col">Nombre</th>
                     <th scope="col">Apellido</th>
                     <th scope="col">Fecha de creacion</th>
+
                 </tr>
             </thead>
             <tbody>
@@ -20,7 +21,7 @@
                         <td scope="row">{{ usuario.nombre }}</td>
                         <td scope="row">{{ usuario.apellido }}</td>
                         <td scope="row">{{ usuario.fecha_creacion }}</td>
-                        
+                        <td scope="row"><button class="btn btn-secondary" (click)="openModal(template, usuario)"><i class="bi bi-pencil"></i></button></td>
                         <!-- <td>{{ country.area | number }}</td>
                         <td>{{ country.population | number }}</td> -->
                     </tr>
@@ -46,22 +47,19 @@
     </div>
 
 
-    <ng-template #template>
+    <ng-template #template let-usuario>
         <div class="modal-header d-flex justify-content-between align-items-center">
-
             <!-- Modal Title -->
-            <h4 class="modal-title pull-left">Modal</h4>
-
+            <h4 class="modal-title pull-left">{{ usuario?.nombre_de_usuario }}</h4>
             <!-- Close Button -->
-            <button type="button" 
-                    class="btn btn-close" 
-                    (click)="modalRef.hide()">
+            <button type="button" class="btn btn-close" (click)="modalRef.hide()">
             </button>
         </div>
-
         <!-- Modal Body -->
         <div class="modal-body">
-            This is a modal.
+            <p>Nombre: {{ usuario?.nombre }}</p>
+            <p>Apellido: {{ usuario?.apellido }}</p>
+            <p>Fecha de creación: {{ usuario?.fecha_creacion }}</p>
         </div>
     </ng-template>
 </section>
