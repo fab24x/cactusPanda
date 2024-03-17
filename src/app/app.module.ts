@@ -15,6 +15,7 @@ import { SoporteTecnicoComponent } from './soporte-tecnico/soporte-tecnico.compo
 import { GestionUsuariosComponent } from './gestion-usuarios/gestion-usuarios.component';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     HeaderComponent,
     LandingPageComponent,
     LoginPageComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
