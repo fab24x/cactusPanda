@@ -16,6 +16,9 @@ import { GestionUsuariosComponent } from './gestion-usuarios/gestion-usuarios.co
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { FooterComponent } from './footer/footer.component';
+import { UserPanelComponent } from './user-panel/user-panel.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ContactoComponent } from './contacto/contacto.component';
 
 
 @NgModule({
@@ -25,7 +28,10 @@ import { FooterComponent } from './footer/footer.component';
     LandingPageComponent,
     LoginPageComponent,
     FooterComponent,
-    AdminPanelComponent
+    AdminPanelComponent,
+    UserPanelComponent,
+    PageNotFoundComponent,
+    ContactoComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +39,8 @@ import { FooterComponent } from './footer/footer.component';
     RouterModule,
     AppRoutingModule,
     MatDialogModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+
   ],
   providers: [],
   bootstrap: [AppComponent]
