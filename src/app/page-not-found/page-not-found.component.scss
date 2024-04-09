@@ -1,0 +1,33 @@
+.texto-404{
+    font-size: 10rem;
+    font-weight: bold;
+}
+.boton{
+    border: 1px solid black;
+}
+.boton2:hover{
+    border: 1px solid black;
+    background-color: rgb(245, 245, 245);
+}
+
+.main-page{
+    height: calc(100vh - 61.33px - 56.67px);
+}
+
+@media screen and (max-width: 1180px) {
+    .texto-404{
+        font-size: 8rem;
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    .texto-404{
+        font-size: 5rem;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .texto-404{
+        font-size: 3rem;
+    }
+}

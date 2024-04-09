@@ -1,0 +1,12 @@
+/* styles.scss */
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .content {
+    flex: 1; /* El contenido principal ocupará todo el espacio vertical disponible */
+  }
+  
