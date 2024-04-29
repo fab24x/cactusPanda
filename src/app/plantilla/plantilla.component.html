@@ -1,12 +1,18 @@
-<h2 class="text-center mb-4">Tu plantilla</h2>
-<div class="w-100 d-flex justify-content-center main-div gap-5">
-    <div class="campo-futbol mx-4">
-        <img class="rounded-5" src="../../assets/campo-futbol.jpg" alt="">
+<h2 class="text-center mb-5">Tu plantilla</h2>
+<div class="w-100 d-flex justify-content-center main-div gap-5 mb-4">
+    <div class="campo-futbol position-relative mx-4">
+        <img class="rounded-5 d-block" src="../../assets/campo-futbol.jpg" alt="">
+        @for (jugador of jugadores; track jugador.idJugador) {
+            <div class="position-absolute div-jugador d-flex flex-column" id="jugador-{{jugador.id}}">
+                <img src="https://cdn.gomister.com/file/cdn-common/players/{{jugador.idJugador}}.png?version=20231218000902" alt="" height="50" class="h-100 w-100">
+                <p class="text-center text-white fw-">{{jugador.nombre}}</p>
+            </div>
+        }
     </div>
     <div class="d-flex flex-column justify-content-center align-items-center gap-3 h-100">
         @for (jugador of jugadores; track jugador.idJugador) {
-            <div class="d-flex justify-content-between  align-items-center h-100 bg-white rounded-4 tarjeta-jugador">
-                <div class="d-flex justify-content-between p-2 shadow w-100 h-100">
+            <div class="d-flex justify-content-between  align-items-center h-100 bg-white-4 tarjeta-jugador">
+                <div class="d-flex justify-content-between p-2 shadow w-100 h-100 rounded-4">
                     <div class="d-flex">
                         <img src="https://cdn.gomister.com/file/cdn-common/players/{{jugador.idJugador}}.png" height="100" alt="">
                         <div>
