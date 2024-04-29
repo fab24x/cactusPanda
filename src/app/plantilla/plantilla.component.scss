@@ -1,13 +1,75 @@
 .campo-futbol{
     height: 800px;
+    width: fit-content;
     img{
         height: 100%;
         width: auto;
     }
+
+    #jugador-1{
+        bottom: 4%;
+        right: 43%;
+    }
+
+    #jugador-2{
+        bottom: 30%;
+        left: 10%;
+    }
+
+    #jugador-3{
+        bottom: 18%;
+        left: 25%;
+    }
+
+    #jugador-4{
+        bottom: 18%;
+        right: 25%;
+    }
+
+    #jugador-5{
+        bottom: 30%;
+        right: 10%;
+    }
+
+    #jugador-6{
+        bottom: 50%;
+        left: 25%;
+    }
+
+    #jugador-7{
+        bottom: 50%;
+        right: 25%;
+    }
+
+    #jugador-8{
+        bottom: 65%;
+        left: 10%;
+    }
+
+    #jugador-9{
+        bottom: 77%;
+        left: 25%;
+    }
+
+    #jugador-10{
+        bottom: 77%;
+        right: 25%;
+    }
+
+    #jugador-11{
+        bottom: 65%;
+        right: 10%;
+    }
+
 }
 
 .tarjeta-jugador{
     width: 600px;
+}
+
+.div-jugador{
+    height: 75px;
+    width: 75px;
 }
 
 
