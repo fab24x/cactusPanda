@@ -10,6 +10,7 @@ import { GestionUsuariosComponent } from './gestion-usuarios/gestion-usuarios.co
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ContactoComponent } from './contacto/contacto.component';
 import { PlantillaComponent } from './plantilla/plantilla.component';
+import {SoporteTecnicoComponent} from './soporte-tecnico/soporte-tecnico.component';
 
 const routes: Routes = [
   {path: '', component: LandingPageComponent},
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'admin-panel', component: AdminPanelComponent},
   {path: 'admin-panel/historial-usuarios', component: HistorialUsuariosComponent},
   {path: 'admin-panel/gestion-usuarios', component: GestionUsuariosComponent},
+  {path: 'admin-panel/soporte-tecnico', component: SoporteTecnicoComponent},
   {path: 'admin-panel/**', redirectTo: 'admin-panel'},
   {path: 'contacto', component: ContactoComponent},
   {path: 'plantilla', component: PlantillaComponent},
