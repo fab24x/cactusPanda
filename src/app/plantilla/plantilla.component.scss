@@ -1,0 +1,78 @@
+.campo-futbol{
+    height: 800px;
+    img{
+        height: 100%;
+        width: auto;
+    }
+}
+
+.tarjeta-jugador{
+    width: 600px;
+}
+
+
+.blur-img {
+    /*Propiedadesdeldesenfoque*/filter: blur(1px);
+    -webkit-filter: blur(3px);
+    /*ParanavegadoresbasadosenWebKit*//*Estiloparalatransiciónsuavedeldesenfoque*/transition: filter 0.3s ease-in-out;
+    -webkit-transition: filter 0.3s ease-in-out;
+    -moz-transition: filter 0.3s ease-in-out;
+    -ms-transition: filter 0.3s ease-in-out;
+    -o-transition: filter 0.3s ease-in-out;
+
+}
+
+.blur-img:hover {
+    filter: none; /* Elimina el desenfoque al pasar el ratón por encima */
+    -webkit-filter: none; /* Para navegadores basados en WebKit */
+}
+
+.team-button:hover{
+    scale: 1.7;
+}
+
+.pt-background{
+    background-color: #a78300;
+}
+
+.df-background{
+    background-color: #0070e6;
+}
+
+.mc-background{
+   background-color: #2ba765;
+}
+
+.dl-background{
+    background-color: #cd261e;
+}
+
+.foto-equipo{
+    height: 100%;
+}
+
+@media (max-width: 1199px) {
+    .tarjeta-jugador{
+        width: 500px;
+    }
+}
+
+@media (max-width: 1120px) {
+    .campo-futbol{
+        width: 90%;
+        height: fit-content;
+        margin-bottom: 20px;
+        img{
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    .main-div{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+    

@@ -9,6 +9,7 @@ import { HistorialUsuariosComponent } from './historial-usuarios/historial-usuar
 import { GestionUsuariosComponent } from './gestion-usuarios/gestion-usuarios.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ContactoComponent } from './contacto/contacto.component';
+import { PlantillaComponent } from './plantilla/plantilla.component';
 
 const routes: Routes = [
   {path: '', component: LandingPageComponent},
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: 'admin-panel/gestion-usuarios', component: GestionUsuariosComponent},
   {path: 'admin-panel/**', redirectTo: 'admin-panel'},
   {path: 'contacto', component: ContactoComponent},
+  {path: 'plantilla', component: PlantillaComponent},
   {path: '**', component: PageNotFoundComponent},
 ];
 
