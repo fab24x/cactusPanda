@@ -19,6 +19,7 @@ import { FooterComponent } from './footer/footer.component';
 import { UserPanelComponent } from './user-panel/user-panel.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ContactoComponent } from './contacto/contacto.component';
+import { PlantillaComponent } from './plantilla/plantilla.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { ContactoComponent } from './contacto/contacto.component';
     AdminPanelComponent,
     UserPanelComponent,
     PageNotFoundComponent,
-    ContactoComponent
+    ContactoComponent,
+    PlantillaComponent
   ],
   imports: [
     BrowserModule,
