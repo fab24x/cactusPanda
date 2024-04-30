@@ -10,6 +10,21 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+<<<<<<< Updated upstream
+=======
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { HistorialUsuariosComponent } from './historial-usuarios/historial-usuarios.component';
+import { SoporteTecnicoComponent } from './soporte-tecnico/soporte-tecnico.component';
+import { GestionUsuariosComponent } from './gestion-usuarios/gestion-usuarios.component';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { FooterComponent } from './footer/footer.component';
+import { ExamenComponent } from './examen/examen.component';
+import { Examen2formatopcComponent } from './examen2formatopc/examen2formatopc.component';
+import { TablaRankingComponent } from './tabla-ranking/tabla-ranking.component';
+import { PrediccionesComponent } from './predicciones/predicciones.component';
+
+>>>>>>> Stashed changes
 
 @NgModule({
   declarations: [
@@ -17,8 +32,17 @@ import { RegisterComponent } from './register/register.component';
     HeaderComponent,
     LandingPageComponent,
     LoginPageComponent,
+<<<<<<< Updated upstream
     LoginComponent,
     RegisterComponent
+=======
+    FooterComponent,
+    AdminPanelComponent,
+    ExamenComponent,
+    Examen2formatopcComponent,
+    TablaRankingComponent,
+    PrediccionesComponent
+>>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,
