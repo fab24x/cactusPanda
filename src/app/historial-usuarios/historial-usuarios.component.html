@@ -1,30 +1,32 @@
 <a class="btn btn-primary position-fixed" routerLink="/admin-panel">Volver</a>
 <section class="w-100 h-100 admin-panel-section d-flex flex-column align-items-center justify-content-around gap-5">
     <h2 class="h2 fw-bold text-center">¡Bienvenido {{nombre}}!</h2>
-    <div class="w-50 h-100">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">Nombre de usuario</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Apellido</th>
-                    <th scope="col">Fecha de creacion</th>
-                </tr>
-            </thead>
-            <tbody>
-                @for (usuario of usuarios; track usuario.nombre_de_usuario) {
+    <div class="w-100 h-100">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
                     <tr>
-                        <td scope="row">{{ usuario.nombre_de_usuario }}</td>
-                        <td scope="row">{{ usuario.nombre }}</td>
-                        <td scope="row">{{ usuario.apellido }}</td>
-                        <td scope="row">{{ usuario.fecha_creacion }}</td>
-                        
-                        <!-- <td>{{ country.area | number }}</td>
-                        <td>{{ country.population | number }}</td> -->
+                        <th scope="col">Nombre de usuario</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Fecha de creacion</th>
                     </tr>
-                }
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @for (usuario of usuarios; track usuario.nombre_de_usuario) {
+                        <tr>
+                            <td scope="row">{{ usuario.nombre_de_usuario }}</td>
+                            <td scope="row">{{ usuario.nombre }}</td>
+                            <td scope="row">{{ usuario.apellido }}</td>
+                            <td scope="row">{{ usuario.fecha_creacion }}</td>
+                            
+                            <!-- <td>{{ country.area | number }}</td>
+                            <td>{{ country.population | number }}</td> -->
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
         
         <div class="d-flex justify-content-between p-2">
             <ngb-pagination
