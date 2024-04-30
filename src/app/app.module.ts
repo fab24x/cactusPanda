@@ -1,39 +1,66 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, provideProtractorTestingSupport } from '@angular/platform-browser';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDatepickerModule, NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './header/header.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
-import { RegisterComponent } from './register/register.component'; // Importa RegisterComponent
-import { FooterComponent } from './footer/footer.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HistorialUsuariosComponent } from './historial-usuarios/historial-usuarios.component';
+import { RouterModule } from '@angular/router';
+import { RegisterComponent } from './register/register.component';
+
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { HistorialUsuariosComponent } from './historial-usuarios/historial-usuarios.component';
+import { SoporteTecnicoComponent } from './soporte-tecnico/soporte-tecnico.component';
 import { GestionUsuariosComponent } from './gestion-usuarios/gestion-usuarios.component';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { FooterComponent } from './footer/footer.component';
+
+import { UserPanelComponent } from './user-panel/user-panel.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ContactoComponent } from './contacto/contacto.component';
+import { PlantillaComponent } from './plantilla/plantilla.component';
+import { TablaRankingComponent } from './tabla-ranking/tabla-ranking.component';
+import { PrediccionesComponent } from './predicciones/predicciones.component';
+import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    AdminPanelComponent,
     HeaderComponent,
     LandingPageComponent,
-    HistorialUsuariosComponent,
+    AdminPanelComponent,
     LoginPageComponent,
-    RegisterComponent, // Agrega RegisterComponent a la lista de declaraciones
-    FooterComponent
+    FooterComponent,
+    HistorialUsuariosComponent,
+    RegisterComponent,
+    AdminPanelComponent,
+    UserPanelComponent,
+    PageNotFoundComponent,
+    ContactoComponent,
+    PlantillaComponent,
+    TablaRankingComponent,
+    PrediccionesComponent
+
   ],
   imports: [
     BrowserModule,
     NgbModule,
     NgbPaginationModule,
-    AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
+    NgbDatepickerModule,
+    RouterModule,
     AppRoutingModule,
-    ReactiveFormsModule // Agrega ReactiveFormsModule a la lista de imports
+    MatDialogModule,
+    ModalModule.forRoot(),
+
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
