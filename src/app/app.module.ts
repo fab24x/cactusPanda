@@ -10,10 +10,13 @@ import { RegisterComponent } from './register/register.component'; // Importa Re
 import { FooterComponent } from './footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HistorialUsuariosComponent } from './historial-usuarios/historial-usuarios.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { GestionUsuariosComponent } from './gestion-usuarios/gestion-usuarios.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    AdminPanelComponent,
     HeaderComponent,
     LandingPageComponent,
     HistorialUsuariosComponent,
@@ -27,6 +30,7 @@ import { HistorialUsuariosComponent } from './historial-usuarios/historial-usuar
     NgbPaginationModule,
     AppRoutingModule,
     FormsModule,
+    AppRoutingModule,
     ReactiveFormsModule // Agrega ReactiveFormsModule a la lista de imports
   ],
   providers: [],
