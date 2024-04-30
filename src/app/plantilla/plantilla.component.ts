@@ -1,22 +1,73 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { JugadoresService } from '../services/jugadores.service';
+import { Jugador } from '../models/jugador';
 
 @Component({
   selector: 'app-plantilla',
   templateUrl: './plantilla.component.html',
-  styleUrl: './plantilla.component.scss'
+  styleUrl: './plantilla.component.scss',
 })
-export class PlantillaComponent {
-  jugadores = [
-    {id: 1, idJugador: 56, nombre: 'Claudio Bravo', posicion: 'PT', puntos:'28', equipo: 'Real Betis', precio: 907000},
-    {id: 2,idJugador: 57, nombre: 'Jesús Navas', posicion: 'DF', puntos:'32', equipo: 'Sevilla', precio: 1000000},
-    {id: 3, idJugador: 58, nombre: 'Sergio Ramos', posicion: 'DF', puntos:'42', equipo: 'Real Madrid', precio: 1500000},
-    {id: 4, idJugador: 59, nombre: 'Gerard Piqué', posicion: 'DF', puntos:'38', equipo: 'Barcelona', precio: 1200000},
-    {id: 5, idJugador: 60, nombre: 'Jordi Alba', posicion: 'DF', puntos:'40', equipo: 'Barcelona', precio: 1300000},
-    {id: 6, idJugador: 61, nombre: 'Sergio Busquets', posicion: 'MC', puntos:'35', equipo: 'Barcelona', precio: 1100000},
-    {id: 7, idJugador: 62, nombre: 'Sergio Canales', posicion: 'MC', puntos:'37', equipo: 'Real Betis', precio: 1150000},
-    {id: 8, idJugador: 63, nombre: 'Lionel Messi', posicion: 'DL', puntos:'50', equipo: 'Barcelona', precio: 2000000},
-    {id: 9, idJugador: 64, nombre: 'Karim Benzema', posicion: 'DL', puntos:'48', equipo: 'Real Madrid', precio: 1900000},
-    {id: 10, idJugador: 65, nombre: 'Luis Suárez', posicion: 'DL', puntos:'45', equipo: 'Atlético de Madrid', precio: 1800000},
-    {id: 11, idJugador: 66, nombre: 'Youssef En-Nesyri', posicion: 'DL', puntos:'43', equipo: 'Sevilla', precio: 1700000},
-  ]
+export class PlantillaComponent implements OnInit {
+  jugadores: Jugador[] = []; // Array de Jugadores
+  jugadoresFiltrados: Jugador[] = [];
+  idsWebAFiltrar: number[] = [
+    12902, 56, 57, 6035, 476, 1713, 48935, 464, 29, 18109,
+  ];
+
+  constructor(private jugadoresService: JugadoresService) {} // Inyección del servicio
+
+  ngOnInit() {
+    this.loadJugadores();
+  }
+
+  loadJugadores() {
+    this.jugadoresService.getJugadores().subscribe({
+      next: (response: Jugador[]) => {
+        // Cambiar 'any' por 'Jugador[]' para un tipado más preciso
+        this.jugadores = response; // Asignar directamente la respuesta a this.jugadores
+        this.getJugadoresPorIdsWeb(this.idsWebAFiltrar); // Llamada al método de filtrado
+        this.actualizarNombresEquipos();
+      },
+      error: (error: any) => {
+        console.error('Hubo un error al cargar los jugadores:', error);
+      },
+    });
+  }
+
+  getPosicionClass(posicion: string): string {
+    switch (posicion) {
+      case 'PT':
+        return 'pt-background';
+      case 'DF':
+        return 'df-background';
+      case 'MC':
+        return 'mc-background';
+      case 'DL':
+        return 'dl-background';
+      default:
+        return '';
+    }
+  }
+
+  getJugadoresPorIdsWeb(idsWeb: number[]) {
+    this.jugadoresFiltrados = this.jugadores.filter((jugador) =>
+      idsWeb.includes(jugador.id_web)
+    );
+  }
+
+  actualizarNombresEquipos() {
+    this.jugadores.forEach((jugador) => {
+      this.jugadoresService.getNombreEquipo(jugador.equipo_id).subscribe({
+        next: (nombreEquipo: string) => {
+          jugador.nombreEquipo = nombreEquipo; // Agregar el nombre del equipo al jugador
+        },
+        error: (error: any) => {
+          console.error(
+            `Hubo un error al obtener el nombre del equipo para el jugador ${jugador.id}:`,
+            error
+          );
+        },
+      });
+    });
+  }
 }

@@ -16,7 +16,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HeaderComponent,
     LandingPageComponent,
     LoginPageComponent,
-    // RegisterComponent, // Agrega RegisterComponent a la lista de declaraciones
+    RegisterComponent, // Agrega RegisterComponent a la lista de declaraciones
     FooterComponent
   ],
   imports: [

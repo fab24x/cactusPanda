@@ -1,3 +1,11 @@
 .modal-content{
-    width: 75%;
+    @media (min-width: 576px) {
+        width: 75%;
+    }
+}
+
+.admin-panel-section {
+    @media (max-width: 768px) {
+        padding: 1rem;
+    }
 }

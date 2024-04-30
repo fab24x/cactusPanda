@@ -1,42 +1,84 @@
 <h2 class="text-center mb-5">Tu plantilla</h2>
 <div class="w-100 d-flex justify-content-center main-div gap-5 mb-4">
-    <div class="campo-futbol position-relative mx-4">
-        <img class="rounded-5 d-block" src="../../assets/campo-futbol.jpg" alt="">
-        @for (jugador of jugadores; track jugador.idJugador) {
-            <div class="position-absolute div-jugador d-flex flex-column" id="jugador-{{jugador.id}}">
-                <img src="https://cdn.gomister.com/file/cdn-common/players/{{jugador.idJugador}}.png?version=20231218000902" alt="" height="50" class="h-100 w-100">
-                <p class="text-center text-white fw-">{{jugador.nombre}}</p>
-            </div>
-        }
+  <div class="campo-futbol position-relative mx-4">
+    <img class="rounded-5 d-block" src="../../assets/campo-futbol.jpg" alt="" />
+    <!-- <div
+      *ngFor="let jugador of jugadoresFiltrados"
+      class="position-absolute div-jugador d-flex flex-column"
+      [attr.id]="'jugador-' + jugador.id"
+    >
+      <img
+        [src]="
+          'https://cdn.gomister.com/file/cdn-common/players/' +
+          jugador.id_web +
+          '.png?version=20231218000902'
+        "
+        alt=""
+        height="50"
+        class="h-100 w-100"
+      />
+      <p class="text-center text-white fw-">{{ jugador.nombre }}</p>
+    </div> -->
+  </div>
+  <div
+    class="d-flex flex-column justify-content-center align-items-center gap-3 h-100"
+  >
+    <div
+      *ngFor="let jugador of jugadoresFiltrados"
+      class="d-flex justify-content-between align-items-center h-100 bg-white-4 tarjeta-jugador"
+    >
+      <div
+        class="d-flex justify-content-between p-2 shadow w-100 h-100 rounded-4"
+      >
+        <div class="d-flex">
+          <img
+            [src]="
+              'https://cdn.gomister.com/file/cdn-common/players/' +
+              jugador.id_web +
+              '.png'
+            "
+            height="100"
+            alt=""
+          />
+          <div>
+            <p class="h4">
+              {{ jugador.nombre }}
+              <span [class]="getPosicionClass(jugador.posicion)">{{
+                jugador.posicion
+              }}</span>
+            </p>
+            <p class="h6">
+              <!-- <i class="bi bi-coin"></i> {{ jugador.precio | currency : "EUR" }} -->
+            </p>
+            <!-- <p class="h6"><i class="bi bi-award"></i> {{ jugador.puntos }}</p> -->
+          </div>
+          <a
+            href="https://mister.mundodeportivo.com/team#players/{{
+              jugador.id_web
+            }}/"
+            target="_blank"
+            class="mx-3 h6 text-primary link h-100 ver-button align-center player-link"
+            ><i class="bi bi-box-arrow-up-right"></i> Ver</a
+          >
+        </div>
+        <div>
+          <a
+            href="https://mister.mundodeportivo.com/teams/{{
+              jugador.equipo_id
+            }}/"
+            class="team-button blur-img"
+            target="_blank"
+          >
+            <img
+              height="90"
+              src="https://cdn.gomister.com/file/cdn-common/teams/{{
+                jugador.equipo_id
+              }}.png"
+              alt=""
+            />
+          </a>
+        </div>
+      </div>
     </div>
-    <div class="d-flex flex-column justify-content-center align-items-center gap-3 h-100">
-        @for (jugador of jugadores; track jugador.idJugador) {
-            <div class="d-flex justify-content-between  align-items-center h-100 bg-white-4 tarjeta-jugador">
-                <div class="d-flex justify-content-between p-2 shadow w-100 h-100 rounded-4">
-                    <div class="d-flex">
-                        <img src="https://cdn.gomister.com/file/cdn-common/players/{{jugador.idJugador}}.png" height="100" alt="">
-                        <div>
-                            <p class="h4">{{jugador.nombre}}
-                                <span *ngIf="jugador.posicion == 'PT'" class="badge pt-background">{{jugador.posicion}}</span>
-                                <span *ngIf="jugador.posicion == 'DF'" class="badge df-background">{{jugador.posicion}}</span>
-                                <span *ngIf="jugador.posicion == 'MC'" class="badge mc-background">{{jugador.posicion}}</span>
-                                <span *ngIf="jugador.posicion == 'DL'" class="badge dl-background">{{jugador.posicion}}</span>
-                            </p>
-                            <p class="h6"><i class="bi bi-coin"></i> {{jugador.precio}} <i class="bi bi-arrow-up text-primary"></i> </p>
-                            <p class="h6"><i class="bi bi-award"></i> {{jugador.puntos}}</p>
-                        </div>  
-                        <a href="https://mister.mundodeportivo.com/team#players/{{jugador.idJugador}}/" target="_blank" class="mx-3 h6 text-primary link h-100 ver-button align-center player-link"><i class="bi bi-box-arrow-up-right"></i> Ver</a>
-                    </div>
-                    <div>
-                        <a href="https://mister.mundodeportivo.com/teams/2/" class="team-button blur-img" target="_blank">
-                            <img height="90" src="https://cdn.gomister.com/file/cdn-common/teams/2.png" alt="">
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-    
-        }
-    </div>
+  </div>
 </div>

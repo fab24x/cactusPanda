@@ -1,0 +1,39 @@
+
+:host {
+  display: block;
+  background-color: #ffffff; 
+  padding: 20px;
+  min-height: 100vh;
+}
+
+.container {
+  background-color: #67977b;
+  color: #ffffff; 
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+
+  label {
+    color: #ffffff;
+  }
+
+  .form-control {
+    background-color: #495750;
+    border: 1px solid #ced4da;
+    &:focus {
+      background-color: #495057;
+      border-color: #80bdff;
+      outline: 0;
+      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+  }
+
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    &:hover {
+      background-color: #0056b3;
+      border-color: #004085;
+    }
+  }
+}

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SoporteTecnicoComponent } from './soporte-tecnico.component';
+import { TablaRankingComponent } from './tabla-ranking.component';
 
-describe('SoporteTecnicoComponent', () => {
-  let component: SoporteTecnicoComponent;
-  let fixture: ComponentFixture<SoporteTecnicoComponent>;
+describe('TablaRankingComponent', () => {
+  let component: TablaRankingComponent;
+  let fixture: ComponentFixture<TablaRankingComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [SoporteTecnicoComponent]
+      declarations: [TablaRankingComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(SoporteTecnicoComponent);
+    fixture = TestBed.createComponent(TablaRankingComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -21,3 +21,5 @@ describe('SoporteTecnicoComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+

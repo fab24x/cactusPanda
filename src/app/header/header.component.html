@@ -40,6 +40,7 @@
       </div>
     </div>
   </div>
+
   <div *ngIf="!haIniciadoSesion">
     <a class="btn btn-primary" routerLink="/login">Iniciar sesion</a>
     <a class="btn btn-link" routerLink="/register">Registrarse</a>
@@ -51,6 +52,7 @@
 			</button>
 			<div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="dropdown-menu dropdown-menu-end">
 				<button ngbDropdownItem class="text-center" routerLink="/admin-panel">Admin Panel <i class="bi bi-sliders"></i> </button>
+        <button ngbDropdownItem class="text-center" routerLink="/ranking">Ranking <i class="bi bi-sliders"></i> </button>
 				<button ngbDropdownItem class="text-center" routerLink="/contacto">Contacto <i class="bi bi-envelope-paper"></i> </button>
         <hr/>
 				<button ngbDropdownItem class="btn text-danger text-center">Cerrar Sesion <i class="bi bi-box-arrow-right"></i></button>
@@ -58,4 +60,5 @@
 		</div>
   </div>
   
+
 </nav>
