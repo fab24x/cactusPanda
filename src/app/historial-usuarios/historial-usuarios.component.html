@@ -1,46 +1,47 @@
 <a class="btn btn-primary position-fixed" routerLink="/admin-panel">Volver</a>
-<section class="w-100 h-100 admin-panel-section d-flex flex-column align-items-center justify-content-around gap-5">
-    <h2 class="h2 fw-bold text-center">¡Bienvenido {{nombre}}!</h2>
-    <div class="w-50 h-100">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">Nombre de usuario</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Apellido</th>
-                    <th scope="col">Fecha de creacion</th>
-                </tr>
-            </thead>
-            <tbody>
-                @for (usuario of usuarios; track usuario.nombre_de_usuario) {
-                    <tr>
-                        <td scope="row">{{ usuario.nombre_de_usuario }}</td>
-                        <td scope="row">{{ usuario.nombre }}</td>
-                        <td scope="row">{{ usuario.apellido }}</td>
-                        <td scope="row">{{ usuario.fecha_creacion }}</td>
-                        
-                        <!-- <td>{{ country.area | number }}</td>
-                        <td>{{ country.population | number }}</td> -->
-                    </tr>
-                }
-            </tbody>
-        </table>
-        
-        <div class="d-flex justify-content-between p-2">
-            <ngb-pagination
-                [collectionSize]="collectionSize"
-                [(page)]="page"
-                [pageSize]="pageSize"
-                (pageChange)="refreshUsuarios()"
-            >
-            </ngb-pagination>
-        
-            <select class="form-select" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="refreshUsuarios()">
-                <option [ngValue]="5">5 personas por página</option>
-                <option [ngValue]="10">10 personas por página</option>
-                <option [ngValue]="15">15 personas por página</option>
-            </select>
-        </div>
-    </div>
-</section>
+<section
+  class="w-100 h-100 admin-panel-section d-flex flex-column align-items-center justify-content-around gap-5"
+>
+  <h2 class="h2 fw-bold text-center">¡Bienvenido {{ nombre }}!</h2>
+  <div class="w-50 h-100">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Nombre de usuario</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Apellido</th>
+          <th scope="col">Fecha de creacion</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let usuario of usuarios">
+          <td scope="row">{{ usuario.username }}</td>
+          <td scope="row">{{ usuario.name }}</td>
+          <td scope="row">{{ usuario.surname }}</td>
+          <td scope="row">{{ usuario.creation_date }}</td>
+        </tr>
+      </tbody>
+    </table>
 
+    <div class="d-flex justify-content-between p-2">
+      <ngb-pagination
+        [collectionSize]="collectionSize"
+        [(page)]="page"
+        [pageSize]="pageSize"
+        (pageChange)="refreshUsuarios()"
+      >
+      </ngb-pagination>
+
+      <select
+        class="form-select"
+        style="width: auto"
+        [(ngModel)]="pageSize"
+        (ngModelChange)="refreshUsuarios()"
+      >
+        <option [ngValue]="5">5 personas por página</option>
+        <option [ngValue]="10">10 personas por página</option>
+        <option [ngValue]="15">15 personas por página</option>
+      </select>
+    </div>
+  </div>
+</section>
