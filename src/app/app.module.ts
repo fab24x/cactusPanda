@@ -12,6 +12,11 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RouterModule } from '@angular/router';
 import { RegisterComponent } from './register/register.component';
+import { FormsModule } from '@angular/forms';
+import {
+  NgbPaginationModule,
+  NgbTypeaheadModule,
+} from '@ng-bootstrap/ng-bootstrap';
 
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { HistorialUsuariosComponent } from './historial-usuarios/historial-usuarios.component';
@@ -44,10 +49,14 @@ import { HttpClientModule } from '@angular/common/http';
     PlantillaComponent,
     TablaRankingComponent,
     PrediccionesComponent,
+    HistorialUsuariosComponent,
   ],
   imports: [
     BrowserModule,
     NgbModule,
+    FormsModule,
+    NgbPaginationModule,
+    NgbTypeaheadModule,
     RouterModule,
     AppRoutingModule,
     MatDialogModule,
