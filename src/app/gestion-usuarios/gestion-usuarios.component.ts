@@ -46,25 +46,25 @@ const USUARIOS: Usuario[] = [
     fecha_creacion: "2023-06-20T12:00:00.000Z",
   },
   {
-    nombre_de_usuario: "maria.lopez",
+    nombre_de_usuario: "maria.lopez1",
     nombre: "María",
     apellido: "López",
     fecha_creacion: "2023-10-26T10:15:00.000Z",
   },
   {
-    nombre_de_usuario: "david.rodriguez",
+    nombre_de_usuario: "david.rodriguez1",
     nombre: "David",
     apellido: "Rodriguez",
     fecha_creacion: "2023-09-12T17:30:00.000Z",
   },
   {
-    nombre_de_usuario: "maria.lopez",
+    nombre_de_usuario: "maria.lopez2",
     nombre: "María",
     apellido: "López",
     fecha_creacion: "2023-10-26T10:15:00.000Z",
   },
   {
-    nombre_de_usuario: "david.rodriguez",
+    nombre_de_usuario: "david.rodriguez2",
     nombre: "David",
     apellido: "Rodriguez",
     fecha_creacion: "2023-09-12T17:30:00.000Z",
@@ -87,6 +87,8 @@ export class GestionUsuariosComponent {
 	pageSize = 5;
 	collectionSize = USUARIOS.length;
 	usuarios!: Usuario[];
+  selectedUsuario!: Usuario; // Variable para mantener el estado del usuario seleccionado
+  
 
 	refreshUsuarios() {
 		this.usuarios = USUARIOS.map((usuario, i) => ({ id: i + 1, ...usuario })).slice(
@@ -95,16 +97,22 @@ export class GestionUsuariosComponent {
 		);
 	}
 
-
-
-  modalRef!: BsModalRef;
+  actualizarUsuario() {
+    const index = USUARIOS.findIndex(usuario => usuario.nombre_de_usuario === this.selectedUsuario.nombre_de_usuario);
+    if (index !== -1) {
+        USUARIOS[index] = this.selectedUsuario;
+    }
+    this.modalRef.hide();
+  }
 
   constructor(private modalService: BsModalService) {
     this.refreshUsuarios();
   }
 
-  openModal(template: TemplateRef<any>, usuario: any) {
-    this.modalRef = this.modalService.show(template, { class: 'modal-lg', initialState: { usuario } });
+  modalRef!: BsModalRef;
+
+  openModal(template: TemplateRef<any>, usuario: Usuario) {
+    this.selectedUsuario = usuario; // Actualiza el usuario seleccionado
+    this.modalRef = this.modalService.show(template, { class: 'modal-lg' });
   }
-  
 }
