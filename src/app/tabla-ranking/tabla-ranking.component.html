@@ -1,0 +1,21 @@
+<div class="container-fluid mt-4 p-5 bg-custom-green">
+    <h1 class="text-center mb-3 text-white">Liga de Fútbol</h1>
+    <table class="table table-dark table-striped table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nombre de Equipo</th>
+          <th scope="col">Puntos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ranking of rankings; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ ranking.teamName }}</td>
+          <td>{{ ranking.points }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="btn btn-light mt-3">Más detalles</button>
+  </div>
+  

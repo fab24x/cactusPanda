@@ -1,0 +1,37 @@
+
+$custom-green: #064420;
+$custom-black: #333; 
+
+.container-fluid {
+  background-color: $custom-green;
+  color: $custom-black;
+
+  .table {
+    thead {
+      th {
+        background-color: #222; 
+        color: #fff;
+      }
+    }
+
+    tbody {
+      tr:nth-child(odd) {
+        background-color: #333; //impares
+      }
+      tr:nth-child(even) {
+        background-color: #444; // Filas pares 
+      }
+      td, th {
+        border-color: #555; // Borde 
+      }
+    }
+  }
+
+  .btn-light {
+    color: $custom-black;
+    &:hover {
+      background-color: #df7272; 
+      color: $custom-black; 
+    }
+  }
+}

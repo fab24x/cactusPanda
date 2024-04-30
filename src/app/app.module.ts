@@ -9,6 +9,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RouterModule } from '@angular/router';
 import { RegisterComponent } from './register/register.component';
+
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { HistorialUsuariosComponent } from './historial-usuarios/historial-usuarios.component';
 import { SoporteTecnicoComponent } from './soporte-tecnico/soporte-tecnico.component';
@@ -16,10 +17,13 @@ import { GestionUsuariosComponent } from './gestion-usuarios/gestion-usuarios.co
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { FooterComponent } from './footer/footer.component';
+
 import { UserPanelComponent } from './user-panel/user-panel.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ContactoComponent } from './contacto/contacto.component';
 import { PlantillaComponent } from './plantilla/plantilla.component';
+import { TablaRankingComponent } from './tabla-ranking/tabla-ranking.component';
+import { PrediccionesComponent } from './predicciones/predicciones.component';
 
 
 @NgModule({
@@ -33,7 +37,10 @@ import { PlantillaComponent } from './plantilla/plantilla.component';
     UserPanelComponent,
     PageNotFoundComponent,
     ContactoComponent,
-    PlantillaComponent
+    PlantillaComponent,
+    TablaRankingComponent,
+    PrediccionesComponent
+
   ],
   imports: [
     BrowserModule,
