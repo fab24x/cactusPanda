@@ -9,16 +9,16 @@ import { map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class JugadoresService {
-  private apiUrl = `${environment.rutaApi}/jugadores`;
+  private apiUrl = `${environment.rutaApi}jugadores`;
 
   constructor(private http: HttpClient) {}
 
   getJugadores(): Observable<Jugador[]> {
-    return this.http
-      .get<Jugador[]>(this.apiUrl)
-      .pipe(
-        map((data: any[]) =>
-          data.map(
+    return this.http.get<any>(this.apiUrl).pipe(
+      map((response: any) => {
+        const data = response.data;
+        if (Array.isArray(data)) {
+          return data.map(
             (item) =>
               new Jugador(
                 item.id,
@@ -27,8 +27,12 @@ export class JugadoresService {
                 item.equipo_id,
                 item.posicion
               )
-          )
-        )
-      );
+          );
+        } else {
+          console.error('La respuesta del servidor no es un array:', response);
+          return []; // Devuelve un array vacío si la respuesta no es un array
+        }
+      })
+    );
   }
 }

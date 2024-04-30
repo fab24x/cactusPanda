@@ -22,16 +22,10 @@ export class PlantillaComponent implements OnInit {
 
   loadJugadores() {
     this.jugadoresService.getJugadores().subscribe({
-      next: (response: any) => {
-        if (Array.isArray(response.data)) {
-          this.jugadores = response.data;
-          this.getJugadoresPorIdsWeb(this.idsWebAFiltrar); // Llamada al método de filtrado
-        } else {
-          console.error(
-            'La respuesta del servicio no contiene un array de jugadores:',
-            response
-          );
-        }
+      next: (response: Jugador[]) => {
+        // Cambiar 'any' por 'Jugador[]' para un tipado más preciso
+        this.jugadores = response; // Asignar directamente la respuesta a this.jugadores
+        this.getJugadoresPorIdsWeb(this.idsWebAFiltrar); // Llamada al método de filtrado
       },
       error: (error: any) => {
         console.error('Hubo un error al cargar los jugadores:', error);
