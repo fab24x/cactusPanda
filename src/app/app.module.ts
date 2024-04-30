@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule, provideProtractorTestingSupport } from '@angular/platform-browser';
+import {
+  BrowserModule,
+  provideProtractorTestingSupport,
+} from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,6 +28,7 @@ import { PlantillaComponent } from './plantilla/plantilla.component';
 import { TablaRankingComponent } from './tabla-ranking/tabla-ranking.component';
 import { PrediccionesComponent } from './predicciones/predicciones.component';
 
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -39,8 +43,7 @@ import { PrediccionesComponent } from './predicciones/predicciones.component';
     ContactoComponent,
     PlantillaComponent,
     TablaRankingComponent,
-    PrediccionesComponent
-
+    PrediccionesComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,10 +52,9 @@ import { PrediccionesComponent } from './predicciones/predicciones.component';
     AppRoutingModule,
     MatDialogModule,
     ModalModule.forRoot(),
-
+    HttpClientModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-
-export class AppModule { }
+export class AppModule {}
