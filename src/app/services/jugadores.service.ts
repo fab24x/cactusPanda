@@ -3,18 +3,32 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Jugador } from '../models/jugador';
 import { environment } from '../../environments/environment';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class JugadoresService {
+  private apiUrl = `${environment.rutaApi}/jugadores`;
+
   constructor(private http: HttpClient) {}
 
-  getJugador(id: number): Observable<Jugador> {
-    return this.http.get<Jugador>(environment.rutaApi + 'jugadores/' + id);
-  }
-
-  getJugadorWeb(id_web: number): Observable<Jugador> {
-    return this.http.get<Jugador>(`${environment.rutaApi}jugadores/${id_web}`);
+  getJugadores(): Observable<Jugador[]> {
+    return this.http
+      .get<Jugador[]>(this.apiUrl)
+      .pipe(
+        map((data: any[]) =>
+          data.map(
+            (item) =>
+              new Jugador(
+                item.id,
+                item.id_web,
+                item.nombre,
+                item.equipo_id,
+                item.posicion
+              )
+          )
+        )
+      );
   }
 }
