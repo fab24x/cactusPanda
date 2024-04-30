@@ -117,8 +117,6 @@ export class PlantillaComponent {
   }
 
   cargarJugadores(): void {
-    this.jugadoresService.getJugadorWeb(56).subscribe((jugadoresApi) => {
-      this.jugadores = jugadoresApi;
-    });
+    this.jugadoresService.getJugadorWeb(56).subscribe((jugadoresApi) => {});
   }
 }
