@@ -1,14 +1,22 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule, provideProtractorTestingSupport } from '@angular/platform-browser';
+import {
+  BrowserModule,
+  provideProtractorTestingSupport,
+} from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NgbDatepickerModule, NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+import {
+  NgbDatepickerModule,
+  NgbModule,
+  NgbPaginationModule,
+} from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './header/header.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RouterModule } from '@angular/router';
 import { RegisterComponent } from './register/register.component';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { HistorialUsuariosComponent } from './historial-usuarios/historial-usuarios.component';
@@ -26,7 +34,6 @@ import { TablaRankingComponent } from './tabla-ranking/tabla-ranking.component';
 import { PrediccionesComponent } from './predicciones/predicciones.component';
 import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,8 +50,7 @@ import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
     ContactoComponent,
     PlantillaComponent,
     TablaRankingComponent,
-    PrediccionesComponent
-
+    PrediccionesComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,14 +59,13 @@ import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
     NgbDatepickerModule,
+    HttpClientModule,
     RouterModule,
     AppRoutingModule,
     MatDialogModule,
     ModalModule.forRoot(),
-
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-
-export class AppModule { }
+export class AppModule {}
