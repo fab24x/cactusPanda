@@ -1,5 +1,5 @@
 
-$custom-green: #064420;
+$custom-green: #d5ddd8;
 $custom-black: #333; 
 
 .container-fluid {
@@ -16,13 +16,13 @@ $custom-black: #333;
 
     tbody {
       tr:nth-child(odd) {
-        background-color: #333; //impares
+        background-color: #333; 
       }
       tr:nth-child(even) {
-        background-color: #444; // Filas pares 
+        background-color: #444; 
       }
       td, th {
-        border-color: #555; // Borde 
+        border-color: #555; 
       }
     }
   }

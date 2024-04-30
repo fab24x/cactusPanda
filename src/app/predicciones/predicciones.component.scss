@@ -1,14 +1,14 @@
 
 :host {
   display: block;
-  background-color: #064420; // Fondo verde oscuro para la vista general
+  background-color: #ffffff; 
   padding: 20px;
   min-height: 100vh;
 }
 
 .container {
-  background-color: #343a40; // Fondo oscuro para el contenedor de los inputs
-  color: #ffffff; // Texto en color blanco para contraste
+  background-color: #67977b;
+  color: #ffffff; 
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -18,7 +18,7 @@
   }
 
   .form-control {
-    background-color: #495057;
+    background-color: #495750;
     border: 1px solid #ced4da;
     &:focus {
       background-color: #495057;
