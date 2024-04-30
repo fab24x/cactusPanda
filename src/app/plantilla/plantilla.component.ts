@@ -22,16 +22,11 @@ export class PlantillaComponent implements OnInit {
 
   loadJugadores() {
     this.jugadoresService.getJugadores().subscribe({
-      next: (response: any) => {
-        if (Array.isArray(response.data)) {
-          this.jugadores = response.data;
-          this.getJugadoresPorIdsWeb(this.idsWebAFiltrar); // Llamada al método de filtrado
-        } else {
-          console.error(
-            'La respuesta del servicio no contiene un array de jugadores:',
-            response
-          );
-        }
+      next: (response: Jugador[]) => {
+        // Cambiar 'any' por 'Jugador[]' para un tipado más preciso
+        this.jugadores = response; // Asignar directamente la respuesta a this.jugadores
+        this.getJugadoresPorIdsWeb(this.idsWebAFiltrar); // Llamada al método de filtrado
+        this.actualizarNombresEquipos();
       },
       error: (error: any) => {
         console.error('Hubo un error al cargar los jugadores:', error);
@@ -58,5 +53,21 @@ export class PlantillaComponent implements OnInit {
     this.jugadoresFiltrados = this.jugadores.filter((jugador) =>
       idsWeb.includes(jugador.id_web)
     );
+  }
+
+  actualizarNombresEquipos() {
+    this.jugadores.forEach((jugador) => {
+      this.jugadoresService.getNombreEquipo(jugador.equipo_id).subscribe({
+        next: (nombreEquipo: string) => {
+          jugador.nombreEquipo = nombreEquipo; // Agregar el nombre del equipo al jugador
+        },
+        error: (error: any) => {
+          console.error(
+            `Hubo un error al obtener el nombre del equipo para el jugador ${jugador.id}:`,
+            error
+          );
+        },
+      });
+    });
   }
 }

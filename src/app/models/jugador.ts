@@ -4,6 +4,7 @@ export class Jugador {
   nombre: string;
   equipo_id: number;
   posicion: string;
+  nombreEquipo?: string; // Propiedad adicional
 
   constructor(
     id: number = 0,
