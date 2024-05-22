@@ -1,0 +1,9 @@
+services:
+  server:
+    image: nginx:alpine
+    restart: unless-stopped
+    ports:
+      - "8082:80"
+    volumes:
+      - ./dist/cactus-panda/browser:/var/www
+      - ./nginx/conf.d/:/etc/nginx/conf.d/
