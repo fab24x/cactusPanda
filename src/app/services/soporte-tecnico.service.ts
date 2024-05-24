@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { SoporteTecnico } from '../models/soporte-tecnico';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { SoporteTecnicoPost } from '../models/soporte-tecnico-post';
 
 @Injectable({
   providedIn: 'root'
@@ -37,6 +38,11 @@ export class SoporteTecnicoService {
         }
       })
     );
+  }
+
+  crearSolicitud(correo: string, problema: string, descripcion: string): Observable<any> {
+    const soporte: SoporteTecnico = new SoporteTecnico(correo, problema, descripcion);
+    return this.http.post<any>(this.apiUrl, soporte);
   }
   
 }

@@ -2,22 +2,24 @@
     <h1 class="mb-2">Reporte de un problema de la página</h1>
     <h5 class="fw-light">Sentimos que hayas tenido un problema de la página, por favor contáctanos para poder resolverlo lo antes posible</h5>
 
-    <form class="mt-4">
-        <div class="form-group w-100 mb-4">
-          <label for="exampleInputEmail1"><i class="bi bi-envelope"></i> Correo electrónico</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Escribe aquí tu correo electrónico">
-          <small id="emailHelp" class="form-text text-muted">Te contactaremos a través de este correo electrónico cuando tengamos una solución</small>
-        </div>
-        <div class="form-group mb-4">
-          <label for="exampleInputPassword1"><i class="bi bi-bug"></i> Problema</label>
-          <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Escribe tu problema aquí">
-        </div>
-        <div class="form-group mb-4">
-            <label for="exampleInputPassword1"><i class="bi bi-card-text"></i> Descripcion</label>
-            <textarea type="password" class="form-control" id="exampleInputPassword1" placeholder="Escribe tu problema aquí..."></textarea>
-        </div>
-        <div class="d-flex justify-content-center align-items-center">
-            <button type="submit" class="btn btn-primary px-4 m-auto">Enviar</button>
-        </div>
-      </form>
+    <form class="mt-4" (ngSubmit)="submitForm()" #soporteForm="ngForm">
+      <div class="form-group w-100 mb-4">
+        <label for="exampleInputEmail1"><i class="bi bi-envelope"></i> Correo electrónico</label>
+        <input type="email" name="correo" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Escribe aquí tu correo electrónico" [(ngModel)]="soporte.correo">
+        <small id="emailHelp" class="form-text text-muted">Te contactaremos a través de este correo electrónico cuando tengamos una solución</small>
+      </div>
+      <div class="form-group mb-4">
+        <label for="exampleInputPassword1"><i class="bi bi-bug"></i> Problema</label>
+        <input type="text" class="form-control" name="problema" id="exampleInputPassword1" placeholder="Escribe tu problema aquí" [(ngModel)]="soporte.problema">
+      </div>
+      <div class="form-group mb-4">
+        <label for="exampleInputPassword1"><i class="bi bi-card-text"></i> Descripción</label>
+        <textarea name="descripcion" class="form-control" id="exampleInputPassword1" placeholder="Escribe tu problema aquí..." [(ngModel)]="soporte.descripcion"></textarea>
+      </div>
+      <div class="d-flex justify-content-center align-items-center">
+        <button type="submit" class="btn btn-primary px-4 m-auto">Enviar</button>
+      </div>
+    </form>
+    
+  
 </div>
