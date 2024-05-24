@@ -10,15 +10,24 @@ export class SoporteTecnico {
     nombre: string;
     apellido: string;
 
-    constructor(id: number, problema: string, descripcion: string, fecha_mensaje: string, correo: string, nombre_de_usuario: string, nombre: string, apellido: string) {
-        this.id = id;
+    constructor(
+        correo: string,
+        problema: string,
+        descripcion: string,
+        id?: number,
+        fecha_mensaje?: string,
+        nombre_de_usuario?: string,
+        nombre?: string,
+        apellido?: string
+    ) {
+        this.correo = correo;
         this.problema = problema;
         this.descripcion = descripcion;
-        this.fecha_mensaje = fecha_mensaje;
-        this.correo = correo;
-        this.nombre_de_usuario = nombre_de_usuario;
-        this.nombre = nombre;
-        this.apellido = apellido;
+        this.id = id || 0;
+        this.fecha_mensaje = fecha_mensaje || '';
+        this.nombre_de_usuario = nombre_de_usuario || '';
+        this.nombre = nombre || '';
+        this.apellido = apellido || '';
     }
 }
 
