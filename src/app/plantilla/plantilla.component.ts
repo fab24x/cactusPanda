@@ -11,7 +11,7 @@ export class PlantillaComponent implements OnInit {
   jugadores: Jugador[] = []; // Array de Jugadores
   jugadoresFiltrados: Jugador[] = [];
   idsWebAFiltrar: number[] = [
-    12902, 56, 57, 6035, 476, 1713, 48935, 464, 29, 18109,
+    56, 8952, 25872, 19977, 25867, 40093, 55484, 12941, 23173, 18004, 52375
   ];
 
   constructor(private jugadoresService: JugadoresService) {} // Inyección del servicio
@@ -56,7 +56,7 @@ export class PlantillaComponent implements OnInit {
   }
 
   actualizarNombresEquipos() {
-    this.jugadores.forEach((jugador) => {
+    this.jugadoresFiltrados.forEach((jugador) => {
       this.jugadoresService.getNombreEquipo(jugador.equipo_id).subscribe({
         next: (nombreEquipo: string) => {
           jugador.nombreEquipo = nombreEquipo; // Agregar el nombre del equipo al jugador
