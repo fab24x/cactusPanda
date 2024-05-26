@@ -7,26 +7,29 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
+                        <th scope="col">ID</th>
                         <th scope="col">Nombre de usuario</th>
+                        <th scope="col">Nombre Mister</th>
+                        <th scope="col">Correo</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Apellido</th>
-                        <th scope="col">Fecha de creacion</th>
+                        <th scope="col">Fecha de nacimiento</th>
+                        <th scope="col">Fecha de creación</th>
                         <th scope="col"></th>
-
                     </tr>
                 </thead>
                 <tbody>
-                    @for (usuario of usuarios; track usuario.nombre_de_usuario) {
-                        <tr>
-                            <td scope="row">{{ usuario.nombre_de_usuario }}</td>
-                            <td scope="row">{{ usuario.nombre }}</td>
-                            <td scope="row">{{ usuario.apellido }}</td>
-                            <td scope="row">{{ usuario.fecha_creacion }}</td>
-                            <td scope="row"><button class="btn btn-secondary" (click)="openModal(template, usuario)"><i class="bi bi-pencil"></i></button></td>
-                            <!-- <td>{{ country.area | number }}</td>
-                            <td>{{ country.population | number }}</td> -->
-                        </tr>
-                    }
+                    <tr *ngFor="let usuario of usuarios; trackBy: trackByNombreDeUsuario">
+                        <td>{{ usuario.id }}</td>
+                        <td>{{ usuario.nombre_de_usuario }}</td>
+                        <td>{{ usuario.nombre_mister }}</td>
+                        <td>{{ usuario.correo }}</td>
+                        <td>{{ usuario.nombre }}</td>
+                        <td>{{ usuario.apellido }}</td>
+                        <td>{{ usuario.fecha_nacimiento }}</td>
+                        <td>{{ usuario.fecha_creacion }}</td>
+                        <td><button class="btn btn-secondary" (click)="openModal(template, usuario)"><i class="bi bi-pencil"></i></button></td>
+                    </tr>
                 </tbody>
             </table>
         </div>
@@ -48,26 +51,41 @@
         </div>
     </div>
 
-
     <ng-template #template let-modal>
         <div class="modal-header d-flex justify-content-between align-items-center">
             <!-- Modal Title -->
             <h4 class="modal-title text-primary">{{ selectedUsuario.nombre_de_usuario }}</h4>
             <!-- Close Button -->
-            <button type="button" class="btn btn-close" (click)="modalRef.hide()">
-            </button>
-        </div>        
+            <button type="button" class="btn btn-close" (click)="modalRef.hide()"></button>
+        </div>
         <!-- Modal Body -->
         <div class="modal-body">
+            <p><span class="fw-bold text-primary">ID:</span> {{ selectedUsuario.id }}</p>
             <p><span class="fw-bold text-primary">Usuario:</span> <input type="text" [(ngModel)]="selectedUsuario.nombre_de_usuario"></p>
+            <p><span class="fw-bold text-primary">Nombre Mister:</span> <input type="text" [(ngModel)]="selectedUsuario.nombre_mister"></p>
+            <p><span class="fw-bold text-primary">Correo:</span> <input type="text" [(ngModel)]="selectedUsuario.correo"></p>
+            <p class="d-flex align-items-center">
+                <span class="fw-bold text-primary">Contraseña:</span>
+                <input class="ms-2" [type]="showPass ? 'text' : 'password'" [(ngModel)]="selectedUsuario.pass">
+                <button type="button" class="btn btn-secondary ms-2" (click)="toggleShowPass()">
+                    <i class="bi" [ngClass]="showPass ? 'bi-eye-slash' : 'bi-eye'"></i>
+                </button>
+            </p>
+            <p class="d-flex align-items-center">
+                <span class="fw-bold text-primary">Contraseña Mister:</span>
+                <input class="ms-2" [type]="showPassMister ? 'text' : 'password'" [(ngModel)]="selectedUsuario.pass_mister">
+                <button type="button" class="btn btn-secondary ms-2" (click)="toggleShowPassMister()">
+                    <i class="bi" [ngClass]="showPassMister ? 'bi-eye-slash' : 'bi-eye'"></i>
+                </button>
+            </p>
             <p><span class="fw-bold text-primary">Nombre:</span> <input type="text" [(ngModel)]="selectedUsuario.nombre"></p>
             <p><span class="fw-bold text-primary">Apellido:</span> <input type="text" [(ngModel)]="selectedUsuario.apellido"></p>
+            <p><span class="fw-bold text-primary">Fecha de nacimiento:</span> <input type="date" [(ngModel)]="selectedUsuario.fecha_nacimiento"></p>
             <p><span class="fw-bold text-primary">Fecha de creación:</span> {{ selectedUsuario.fecha_creacion }}</p>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-primary" (click)="actualizarUsuario()">Aceptar</button>
+            <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">Cancelar</button>
+            <button type="button" class="btn btn-primary" (click)="confirmarActualizacion()">Aceptar</button>
         </div>
-        
     </ng-template>
 </section>
-

@@ -10,6 +10,7 @@
           <th scope="col"></th>
           <th scope="col">Nombre del jugador</th>
           <th scope="col">Puntos de la jornada</th>
+          <th scope="col">Visitar</th>
         </tr>
       </thead>
       <tbody>
@@ -24,9 +25,9 @@
             {{ player.nombre_del_jugador }}
           </td>
           <td>{{ player.puntos_jornada }}</td>
+          <td><a href="https://mister.mundodeportivo.com/feed#players/{{player.id_jugador}}/" class="btn btn-primary"><i class="bi bi-right"></i> Ver jugador</a></td>
         </tr>
       </tbody>      
     </table>
-    <button class="btn btn-light mt-3">Más detalles</button>
   </div>
   
