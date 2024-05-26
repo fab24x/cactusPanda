@@ -1,16 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { PrediJugador } from '../models/predi-jugador';
+import { PrediJugadorService } from '../services/predi-jugador.service';
 
 @Component({
   selector: 'app-tabla-ranking',
   templateUrl: './tabla-ranking.component.html',
-  styleUrl: './tabla-ranking.component.scss'
+  styleUrls: ['./tabla-ranking.component.scss']
 })
-export class TablaRankingComponent {
-  rankings = [
-    { position: 1, teamName: 'FC Barcelona', points: 88 },
-    { position: 2, teamName: 'Real Madrid', points: 86 },
-    { position: 3, teamName: 'Atletico Madrid', points: 78 },
-    // Agrega más equipos según sea necesario
-  ];
-}
+export class TablaRankingComponent implements OnInit {
 
+  players: PrediJugador[] = [];
+
+  constructor(private prediJugadorService: PrediJugadorService) {}
+
+  ngOnInit(): void {
+    this.prediJugadorService.getTopPlayers().subscribe((data: PrediJugador[]) => {
+      this.players = data;
+      console.log('Players data:', this.players);
+    });
+  }
+
+}

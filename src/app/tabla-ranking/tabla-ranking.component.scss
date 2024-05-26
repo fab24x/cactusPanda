@@ -1,37 +1,43 @@
+.gold{
+  color: black !important;
+  background-color: gold !important;
+  padding: 10px !important;
+  border-radius: 20px;
+  font-weight: bold;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  box-shadow: 0 0 5px rgb(126, 126, 126);
+}
 
-$custom-green: #d5ddd8;
-$custom-black: #333; 
+.silver {
+  color: black !important;
+  background-color: silver !important;
+  padding: 10px !important;
+  border-radius: 20px;
+  font-weight: bold;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  box-shadow: 0 0 5px rgb(126, 126, 126);
+}
 
-.container-fluid {
-  background-color: $custom-green;
-  color: $custom-black;
+.bronze {
+  color: black !important;
+  font-weight: bold;
+  background-color: #cd7f32 !important;
+  padding: 10px !important;
+  border-radius: 20px;
+  font-weight: bold;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  box-shadow: 0 0 5px rgb(126, 126, 126);
+}
 
-  .table {
-    thead {
-      th {
-        background-color: #222; 
-        color: #fff;
-      }
-    }
-
-    tbody {
-      tr:nth-child(odd) {
-        background-color: #333; 
-      }
-      tr:nth-child(even) {
-        background-color: #444; 
-      }
-      td, th {
-        border-color: #555; 
-      }
-    }
-  }
-
-  .btn-light {
-    color: $custom-black;
-    &:hover {
-      background-color: #df7272; 
-      color: $custom-black; 
-    }
-  }
+.index-td{
+  width: 20px;
 }
