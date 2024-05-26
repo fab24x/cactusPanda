@@ -1,20 +1,31 @@
-<div class="container-fluid mt-4 p-5 bg-custom-green">
-    <h1 class="text-center mb-3 text-white">Liga de Fútbol</h1>
-    <table class="table table-dark table-striped table-hover">
+<div class="bg-light p-5">
+    <h1 class="text-center mb-3 text-dark h1 fw-semibold">Ranking jugadores</h1>
+    <div class="d-flex justify-content-center align-items-center">
+      <p class="w-50 text-center">Bienvenidos al ranking de los 50 mejores jugadores de la <span class="fw-bold ">Jornada {{players[1].jornada}}</span>. Aquí encontrarás a los jugadores más destacados, con sus puntuaciones y contribuciones en el campo. ¡Descubre quiénes brillaron esta jornada!</p>
+    </div>
+   
+    <table class="table table-light table-striped">
       <thead>
         <tr>
-          <th scope="col">#</th>
-          <th scope="col">Nombre de Equipo</th>
-          <th scope="col">Puntos</th>
+          <th scope="col"></th>
+          <th scope="col">Nombre del jugador</th>
+          <th scope="col">Puntos de la jornada</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let ranking of rankings; let i = index">
-          <td>{{ i + 1 }}</td>
-          <td>{{ ranking.teamName }}</td>
-          <td>{{ ranking.points }}</td>
+        <tr class="" *ngFor="let player of players; let i = index">
+          <td class="index-td">
+            <span class="d-flex justify-content-center align-items-center" [ngClass]="{'gold': i === 0, 'silver': i === 1, 'bronze': i === 2}">
+              {{i + 1}}
+            </span>
+          </td>
+          <td>
+            <img src="https://cdn.gomister.com/file/cdn-common/players/{{player.id_jugador}}.png?version=20231222225612" height="40" alt="">
+            {{ player.nombre_del_jugador }}
+          </td>
+          <td>{{ player.puntos_jornada }}</td>
         </tr>
-      </tbody>
+      </tbody>      
     </table>
     <button class="btn btn-light mt-3">Más detalles</button>
   </div>
