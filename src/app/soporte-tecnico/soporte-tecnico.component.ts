@@ -17,7 +17,7 @@ import { SoporteTecnico } from '../models/soporte-tecnico';
 })
 
 export class SoporteTecnicoComponent implements OnInit {
-  nombre = 'Mario'
+  nombre = localStorage.getItem('nombre');
   page = 1;
   pageSize = 5;
   collectionSize = 0;
