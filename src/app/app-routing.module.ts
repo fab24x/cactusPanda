@@ -13,6 +13,7 @@ import { PlantillaComponent } from './plantilla/plantilla.component';
 import {SoporteTecnicoComponent} from './soporte-tecnico/soporte-tecnico.component';
 import { TablaRankingComponent } from './tabla-ranking/tabla-ranking.component';
 import { PrediccionesComponent } from './predicciones/predicciones.component';
+import { LoginMisterComponent } from './login-mister/login-mister.component';
 
 const routes: Routes = [
   {path: '', component: LandingPageComponent},
@@ -27,6 +28,7 @@ const routes: Routes = [
   {path: 'admin-panel/**', redirectTo: 'admin-panel'},
   {path: 'contacto', component: ContactoComponent},
   {path: 'plantilla', component: PlantillaComponent},
+  {path: 'login-mister', component: LoginMisterComponent},
   {path: '**', component: PageNotFoundComponent},
 
 ];
