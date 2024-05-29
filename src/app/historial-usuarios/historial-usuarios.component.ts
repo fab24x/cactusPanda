@@ -15,7 +15,7 @@ import { Usuario } from '../models/usuario';
   styleUrl: './historial-usuarios.component.scss',
 })
 export class HistorialUsuariosComponent implements OnInit {
-  nombre = 'Mario';
+  nombre = localStorage.getItem('nombre');
   usuarios: Usuario[] = [];
   usuariosFiltrados: Usuario[] = [];
   page = 1;

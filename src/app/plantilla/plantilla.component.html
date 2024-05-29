@@ -1,8 +1,9 @@
-<h2 class="text-center mb-5">Tu plantilla</h2>
+<h2 class="text-center">Tu plantilla</h2>
+<p class="text-center mb-5">Para editar la plantilla, pulse <a class="link-primary btn-link" routerLink="editar-plantilla">aquí</a></p>
 <div class="w-100 d-flex justify-content-center main-div gap-5 mb-4">
   <div class="campo-futbol position-relative mx-4">
     <img class="rounded-5 d-block" src="../../assets/campo-futbol.jpg" alt="" />
-    <ng-container *ngFor="let jugador of jugadoresFiltrados.reverse(); let i = index">
+    <ng-container *ngFor="let jugador of jugadores; let i = index">
       <div
         class="position-absolute div-jugador d-flex flex-column"
         [attr.id]="'jugador-' + (i+1)"
@@ -17,7 +18,7 @@
           height="50"
           class="h-100 w-100"
         />
-        <p class="text-center text-white ">{{ jugador.nombre }}</p>
+        <p class="text-center text-white ">{{ jugador.nombre_del_jugador }}</p>
       </div>
     </ng-container>
     
@@ -26,7 +27,7 @@
     class="d-flex flex-column justify-content-center align-items-center gap-3 h-100"
   >
     <div
-      *ngFor="let jugador of jugadoresFiltrados"
+      *ngFor="let jugador of jugadores"
       class="d-flex justify-content-between align-items-center h-100 bg-white-4 tarjeta-jugador"
     >
       <div
@@ -43,16 +44,25 @@
             alt=""
           />
           <div>
-            <p class="h4">
-              {{ jugador.nombre }}
-              <span [class]="getPosicionClass(jugador.posicion)">{{
+            <p class="h5">
+              {{ jugador.nombre_del_jugador }}
+              <span class="rounded-3 p-1 text-white" [class]="getPosicionClass(jugador.posicion)">{{
                 jugador.posicion
               }}</span>
             </p>
             <p class="h6">
-              <!-- <i class="bi bi-coin"></i> {{ jugador.precio | currency : "EUR" }} -->
+              <i class="bi bi-coin"></i>
+              <span [ngClass]="getPrecioClass(jugador.prediPrecio, jugador.ultimoPrediPrecio.precio)">
+                {{ jugador.prediPrecio | currency : 'EUR' }}
+              </span>
             </p>
-            <!-- <p class="h6"><i class="bi bi-award"></i> {{ jugador.puntos }}</p> -->
+            <p class="h6">
+              <i class="bi bi-award"></i>
+              <span [ngClass]="getPuntuacionClass(jugador.prediPuntuacion, jugador.ultimoPrediJugador?.puntos_jornada)">
+                {{ jugador.prediPuntuacion }}
+              </span>
+
+            </p>
           </div>
           <a
             href="https://mister.mundodeportivo.com/team#players/{{
@@ -66,7 +76,7 @@
         <div>
           <a
             href="https://mister.mundodeportivo.com/teams/{{
-              jugador.equipo_id
+              jugador.equipo_id_web
             }}/"
             class="team-button blur-img"
             target="_blank"
@@ -74,7 +84,7 @@
             <img
               height="90"
               src="https://cdn.gomister.com/file/cdn-common/teams/{{
-                jugador.equipo_id
+                jugador.equipo_id_web
               }}.png"
               alt=""
             />

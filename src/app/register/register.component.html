@@ -5,35 +5,34 @@
       <div *ngIf="camposVacios" class="alert alert-danger" role="alert">
         Todos los campos son obligatorios para registrarse
       </div>
-      <div *ngIf="menorEdad" class="alert alert-danger" role="alert">
+      <!-- <div *ngIf="menorEdad" class="alert alert-danger" role="alert">
         Necesita ser mayor de 18 años para registrarse
-      </div>
+      </div> -->
       <!-- Campos de registro como nombre de usuario, email, contraseña, etc. -->
       <div class="mb-2">
-        <label for="username" class="text-white mb-1 w-100"><i class="bi bi-person-fill"></i> Nombre de Usuario:</label>
-        <input type="text" id="username" class="form-control w-100 mb-3" placeholder="Elige un nombre de usuario" formControlName="username">
+        <label for="nombre_de_usuario" class="text-white mb-1 w-100"><i class="bi bi-person-fill"></i> Nombre de Usuario:</label>
+        <input type="text" id="nombre_de_usuario" class="form-control w-100 mb-3" placeholder="Elige un nombre de usuario" formControlName="nombre_de_usuario">
       </div>
       <div class="mb-2 w-100">
-        <label for="email" class="text-white mb-1"><i class="bi bi-envelope-fill"></i> Email:</label>
-        <input type="email" id="email" class="form-control w-100 mb-3" placeholder="Ingresa tu email" formControlName="email">
+        <label for="correo" class="text-white mb-1"><i class="bi bi-envelope-fill"></i> Email:</label>
+        <input type="email" id="correo" class="form-control w-100 mb-3" placeholder="Ingresa tu email" formControlName="correo">
       </div>
       <div class="form-group mb-2 w-100">
-        <label for="password" class="text-white mb-1"><i class="bi bi-lock-fill"></i> Contraseña:</label>
-        <input type="password" id="password" class="form-control w-100 mb-3" placeholder="Crea una contraseña" formControlName="password">
+        <label for="pass" class="text-white mb-1"><i class="bi bi-lock-fill"></i> Contraseña:</label>
+        <input type="password" id="pass" class="form-control w-100 mb-3" placeholder="Crea una contraseña" formControlName="pass">
       </div>
       <div class="form-group mb-2 w-100">
-        <label for="password" class="text-white mb-1"><i class="bi bi-calendar-fill"></i> Fecha de nacimiento:</label>
+        <label for="nombre" class="text-white mb-1"><i class="bi bi-person-fill"></i> Nombre:</label>
+        <input type="text" id="nombre" class="form-control w-100 mb-3" placeholder="Escriba su nombre" formControlName="nombre">
+      </div>
+      <div class="form-group mb-2 w-100">
+        <label for="apellido" class="text-white mb-1"><i class="bi bi-person-fill"></i> Apellidos:</label>
+        <input type="text" id="apellido" class="form-control w-100 mb-3" placeholder="Escriba su apellido" formControlName="apellido">
+      </div>
+      <div class="form-group mb-2 w-100">
+        <label for="fecha_nacimiento" class="text-white mb-1"><i class="bi bi-calendar-fill"></i> Fecha de nacimiento:</label>
         <div class="input-group">
-          <input
-            class="form-control"
-            placeholder="yyyy-mm-dd"
-            name="dp"
-            [(ngModel)]="model"
-            ngbDatepicker
-            required
-            #d="ngbDatepicker"
-          />
-          <button class="btn btn-outline-secondary bi bi-calendar3" id="date-button" (click)="d.toggle()" type="button"></button>
+          <input type="date" class="form-control" placeholder="yyyy-mm-dd" formControlName="fecha_nacimiento" />
         </div>
       </div>
       <button type="submit" class="btn btn-primary w-100 mt-4">Registrarse</button>

@@ -20,4 +20,33 @@ export class TablaRankingComponent implements OnInit {
     });
   }
 
+  parseNumber(value: string): number {
+    return parseFloat(value.replace(/\./g, '').replace(' €', '').replace(',', '.'));
+  }
+
+  getComparisonClass(actual: string, predicted: string): string {
+    const actualNumber = this.parseNumber(actual);
+    const predictedNumber = this.parseNumber(predicted);
+
+    if (actualNumber > predictedNumber) {
+      return 'text-danger';
+    } else if (actualNumber < predictedNumber) {
+      return 'text-success';
+    } else {
+      return '';
+    }
+  }
+
+  getComparisonIcon(actual: string, predicted: string): string {
+    const actualNumber = this.parseNumber(actual);
+    const predictedNumber = this.parseNumber(predicted);
+
+    if (actualNumber > predictedNumber) {
+      return 'bi-arrow-down';
+    } else if (actualNumber < predictedNumber) {
+      return 'bi-arrow-up';
+    } else {
+      return 'bi-dash';
+    }
+  }
 }

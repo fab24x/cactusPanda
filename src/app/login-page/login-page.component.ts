@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {AuthService } from '../services/auth-service.service';
+import { LoginResponse } from '../models/LoginResponse';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-page',
@@ -7,55 +10,42 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./login-page.component.scss']
 })
 export class LoginPageComponent {
-  camposVacios = false;
-  camposIncorrectos = false;
-  title = 'Angular Form Validation Tutorial';
-  angForm: FormGroup;
+  angForm!: FormGroup;
+  camposVacios: boolean = false;
+  camposIncorrectos: boolean = false;
 
-  constructor(private fb: FormBuilder) {
-    // Inicializar angForm en el constructor
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
+    this.createForm();
+  }
+
+  ngOnInit(): void { }
+
+  createForm() {
     this.angForm = this.fb.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required]
+      correo: ['', Validators.required],
+      pass: ['', Validators.required]
     });
   }
 
   onSubmit() {
-    // Verificar si el formulario es válido
-    if (this.angForm.valid) {
-      // Aquí puedes agregar la lógica para enviar los datos del formulario
-      console.log('Formulario válido');
-      console.log('Datos del formulario:', this.angForm.value);
-    } else {
-      // Si el formulario no es válido, ver si los campos están vacíos
-      const emailControl = this.angForm.get('email');
-      const passwordControl = this.angForm.get('password');
-  
-      if (!emailControl || !passwordControl || !emailControl.value || !passwordControl.value) {
-        this.camposVacios = true;
-        this.camposIncorrectos = false;
-        return;
-      }
-  
-      // Si los campos no están vacíos, establecer camposIncorrectos en true
-      this.camposVacios = false;
-      this.camposIncorrectos = true;
-      // También puedes marcar los campos como tocados para mostrar mensajes de error en la plantilla HTML
-      this.markFormGroupTouched(this.angForm);
+    if (this.angForm.invalid) {
+      this.camposVacios = true;
+      return;
     }
-  }
-  
-  
-  
 
-  // Método para marcar todos los campos como tocados
-  private markFormGroupTouched(formGroup: FormGroup) {
-    Object.values(formGroup.controls).forEach(control => {
-      control.markAsTouched();
+    const { correo, pass } = this.angForm.value;
 
-      if (control instanceof FormGroup) {
-        this.markFormGroupTouched(control);
+    this.authService.login(correo, pass).subscribe(
+      (response: LoginResponse) => {
+        console.log('Login exitoso:', response);
+        // Redirigir al usuario después de un inicio de sesión exitoso
+        this.router.navigate(['/plantilla']);
+      },
+      error => {
+        console.log('Error en el login:', error);
+        this.camposIncorrectos = true;
+        console.log(correo + pass)
       }
-    });
+    );
   }
 }

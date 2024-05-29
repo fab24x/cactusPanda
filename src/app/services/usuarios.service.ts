@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Usuario } from '../models/usuario';
@@ -9,12 +9,12 @@ import { map } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class UsuariosService {
-  private apiUrl = `${environment.rutaApi}usuarios`;
+  private apiUrl = `${environment.rutaApi}`;
 
   constructor(private http: HttpClient) {}
 
   getUsuarios(): Observable<Usuario[]> {
-    return this.http.get<any>(this.apiUrl).pipe(
+    return this.http.get<any>(this.apiUrl+'usuarios').pipe(
       map((response: any) => {
         const data = response.data;
         if (Array.isArray(data)) {
@@ -42,5 +42,15 @@ export class UsuariosService {
     return this.http
       .get<any>(`${environment.rutaApi}equipos/${equipo_id}`)
       .pipe(map((equipo: any) => equipo.nombre));
+  }
+
+  updateSpecificValues(id: number, changes: any, accessToken: string): Observable<any> {
+    const url = `${this.apiUrl}usuarios/update-values/${id}`;
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${accessToken}`,
+      'Content-Type': 'application/json'
+    });
+
+    return this.http.put(url, changes, { headers });
   }
 }

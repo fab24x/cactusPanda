@@ -82,6 +82,7 @@
             <p><span class="fw-bold text-primary">Apellido:</span> <input type="text" [(ngModel)]="selectedUsuario.apellido"></p>
             <p><span class="fw-bold text-primary">Fecha de nacimiento:</span> <input type="date" [(ngModel)]="selectedUsuario.fecha_nacimiento"></p>
             <p><span class="fw-bold text-primary">Fecha de creación:</span> {{ selectedUsuario.fecha_creacion }}</p>
+            <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">Cancelar</button>

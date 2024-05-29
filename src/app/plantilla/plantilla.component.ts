@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { JugadoresService } from '../services/jugadores.service';
 import { Jugador } from '../models/jugador';
+import { JugadoresPosesionService } from '../services/jugadores-posesion.service';
 
 @Component({
   selector: 'app-plantilla',
@@ -8,30 +9,29 @@ import { Jugador } from '../models/jugador';
   styleUrl: './plantilla.component.scss',
 })
 export class PlantillaComponent implements OnInit {
-  jugadores: Jugador[] = []; // Array de Jugadores
-  jugadoresFiltrados: Jugador[] = [];
-  idsWebAFiltrar: number[] = [
-    56, 8952, 25872, 19977, 25867, 40093, 55484, 12941, 23173, 18004, 52375
-  ];
+  jugadores: any;
 
-  constructor(private jugadoresService: JugadoresService) {} // Inyección del servicio
+  constructor(private jugadoresPosesionService: JugadoresPosesionService) {}
 
   ngOnInit() {
     this.loadJugadores();
   }
 
   loadJugadores() {
-    this.jugadoresService.getJugadores().subscribe({
+    this.jugadoresPosesionService.getJugadoresPosesion().subscribe({
       next: (response: Jugador[]) => {
-        // Cambiar 'any' por 'Jugador[]' para un tipado más preciso
-        this.jugadores = response; // Asignar directamente la respuesta a this.jugadores
-        this.getJugadoresPorIdsWeb(this.idsWebAFiltrar); // Llamada al método de filtrado
-        this.actualizarNombresEquipos();
+        this.jugadores = this.ordenarJugadores(response);
+        console.log(this.jugadores);
       },
       error: (error: any) => {
         console.error('Hubo un error al cargar los jugadores:', error);
       },
     });
+  }
+
+  ordenarJugadores(jugadores: Jugador[]): Jugador[] {
+    const orden: { [key in 'PT' | 'DF' | 'MC' | 'DL']: number } = { 'PT': 1, 'DF': 2, 'MC': 3, 'DL': 4 };
+    return jugadores.sort((a, b) => orden[a.posicion as keyof typeof orden] - orden[b.posicion as keyof typeof orden]);
   }
 
   getPosicionClass(posicion: string): string {
@@ -49,25 +49,23 @@ export class PlantillaComponent implements OnInit {
     }
   }
 
-  getJugadoresPorIdsWeb(idsWeb: number[]) {
-    this.jugadoresFiltrados = this.jugadores.filter((jugador) =>
-      idsWeb.includes(jugador.id_web)
-    );
+  getPrecioClass(prediPrecio: number, ultimoPrediPrecio: number): string {
+    if (prediPrecio > ultimoPrediPrecio) {
+      return 'text-success bi bi-arrow-up';
+    } else if (prediPrecio < ultimoPrediPrecio) {
+      return 'text-danger bi bi-arrow-down';
+    } else {
+      return 'text-dark';
+    }
   }
 
-  actualizarNombresEquipos() {
-    this.jugadoresFiltrados.forEach((jugador) => {
-      this.jugadoresService.getNombreEquipo(jugador.equipo_id).subscribe({
-        next: (nombreEquipo: string) => {
-          jugador.nombreEquipo = nombreEquipo; // Agregar el nombre del equipo al jugador
-        },
-        error: (error: any) => {
-          console.error(
-            `Hubo un error al obtener el nombre del equipo para el jugador ${jugador.id}:`,
-            error
-          );
-        },
-      });
-    });
+  getPuntuacionClass(prediPuntuacion: number, puntosJornada: number): string {
+    if (prediPuntuacion > puntosJornada) {
+      return 'text-success bi bi-arrow-up';
+    } else if (prediPuntuacion < puntosJornada) {
+      return 'text-danger bi bi-arrow-down';
+    } else {
+      return 'text-dark';
+    }
   }
 }

@@ -13,6 +13,9 @@ import { PlantillaComponent } from './plantilla/plantilla.component';
 import {SoporteTecnicoComponent} from './soporte-tecnico/soporte-tecnico.component';
 import { TablaRankingComponent } from './tabla-ranking/tabla-ranking.component';
 import { PrediccionesComponent } from './predicciones/predicciones.component';
+import { LoginMisterComponent } from './login-mister/login-mister.component';
+import { EditarUsuarioComponent } from './editar-usuario/editar-usuario.component';
+import { EditarPlantillaComponent } from './editar-plantilla/editar-plantilla.component';
 
 const routes: Routes = [
   {path: '', component: LandingPageComponent},
@@ -27,6 +30,9 @@ const routes: Routes = [
   {path: 'admin-panel/**', redirectTo: 'admin-panel'},
   {path: 'contacto', component: ContactoComponent},
   {path: 'plantilla', component: PlantillaComponent},
+  {path: 'plantilla/editar-plantilla', component: EditarPlantillaComponent},
+  {path: 'login-mister', component: LoginMisterComponent},
+  {path: 'editar-usuario', component: EditarUsuarioComponent},
   {path: '**', component: PageNotFoundComponent},
 
 ];
