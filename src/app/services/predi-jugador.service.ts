@@ -18,8 +18,8 @@ export class PrediJugadorService {
     const token = this.authService.getToken();
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
-    console.log(this.http.get<PrediJugador[]>(this.apiUrl, {headers}));
-    return this.http.get<PrediJugador[]>(this.apiUrl);
+    console.log(this.http.get<PrediJugador[]>(this.apiUrl));
+    return this.http.get<PrediJugador[]>(this.apiUrl, { headers });
   }
   
 }
