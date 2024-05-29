@@ -18,6 +18,10 @@ export class EditarPlantillaComponent implements OnInit {
   itemsPerPage: number = 10;
   maxSelectedPlayers: number = 11;
   maxGoalkeepers: number = 1;
+  maxDefenders: number = 4;
+  maxMidfielders: number = 4;
+  maxForwards: number = 4;
+  playersActuales: any;
 
   constructor(
     private jugadoresService: JugadoresService,
@@ -28,6 +32,19 @@ export class EditarPlantillaComponent implements OnInit {
   ngOnInit(): void {
     this.loadPlayers();
     this.loadUser();
+    this.loadApiPlayers();
+  }
+
+  loadApiPlayers(): void {
+    this.jugadoresPosesionService.getJugadoresPosesion().subscribe(
+      (data: Jugador[]) => {
+        this.playersActuales = data;
+        this.initializeSelectedPlayers();
+      },
+      (error) => {
+        console.error('Error al cargar jugadores:', error);
+      }
+    );
   }
 
   loadPlayers(): void {
@@ -57,6 +74,12 @@ export class EditarPlantillaComponent implements OnInit {
     this.players.forEach(player => {
       this.selectedPlayers[player.id] = false;
     });
+
+    if (this.playersActuales) {
+      this.playersActuales.forEach((player: Jugador) => {
+        this.selectedPlayers[player.id] = true;
+      });
+    }
   }
 
   get filteredFutbolistas() {
@@ -87,14 +110,25 @@ export class EditarPlantillaComponent implements OnInit {
   }
 
   toggleSeleccionado(futbolista: Jugador) {
-    const selectedCount = this.getSelectedCount();
-    const selectedGoalkeepers = this.getSelectedGoalkeepers();
-
     if (this.selectedPlayers[futbolista.id]) {
       this.selectedPlayers[futbolista.id] = false;
     } else {
-      if (selectedCount < this.maxSelectedPlayers && (futbolista.posicion !== 'PT' || selectedGoalkeepers < this.maxGoalkeepers)) {
-        this.selectedPlayers[futbolista.id] = true;
+      const selectedCount = this.getSelectedCount();
+      const selectedGoalkeepers = this.getSelectedGoalkeepers();
+      const selectedDefenders = this.getSelectedDefenders();
+      const selectedMidfielders = this.getSelectedMidfielders();
+      const selectedForwards = this.getSelectedForwards();
+
+      if (selectedCount < this.maxSelectedPlayers) {
+        if (futbolista.posicion === 'PT' && selectedGoalkeepers < this.maxGoalkeepers) {
+          this.selectedPlayers[futbolista.id] = true;
+        } else if (futbolista.posicion === 'DF' && selectedDefenders < this.maxDefenders) {
+          this.selectedPlayers[futbolista.id] = true;
+        } else if (futbolista.posicion === 'MC' && selectedMidfielders < this.maxMidfielders) {
+          this.selectedPlayers[futbolista.id] = true;
+        } else if (futbolista.posicion === 'DL' && selectedForwards < this.maxForwards) {
+          this.selectedPlayers[futbolista.id] = true;
+        }
       }
     }
   }
@@ -107,11 +141,45 @@ export class EditarPlantillaComponent implements OnInit {
     return this.players.filter(player => this.selectedPlayers[player.id] && player.posicion === 'PT').length;
   }
 
+  getSelectedDefenders(): number {
+    return this.players.filter(player => this.selectedPlayers[player.id] && player.posicion === 'DF').length;
+  }
+
+  getSelectedMidfielders(): number {
+    return this.players.filter(player => this.selectedPlayers[player.id] && player.posicion === 'MC').length;
+  }
+
+  getSelectedForwards(): number {
+    return this.players.filter(player => this.selectedPlayers[player.id] && player.posicion === 'DL').length;
+  }
+
   isDisabled(futbolista: Jugador): boolean {
     const selectedCount = this.getSelectedCount();
     const selectedGoalkeepers = this.getSelectedGoalkeepers();
-    return (selectedCount >= this.maxSelectedPlayers && !this.selectedPlayers[futbolista.id]) ||
-           (futbolista.posicion === 'PT' && selectedGoalkeepers >= this.maxGoalkeepers && !this.selectedPlayers[futbolista.id]);
+    const selectedDefenders = this.getSelectedDefenders();
+    const selectedMidfielders = this.getSelectedMidfielders();
+    const selectedForwards = this.getSelectedForwards();
+
+    if (selectedCount >= this.maxSelectedPlayers && !this.selectedPlayers[futbolista.id]) {
+      return true;
+    }
+
+    switch (futbolista.posicion) {
+      case 'PT':
+        return selectedGoalkeepers >= this.maxGoalkeepers && !this.selectedPlayers[futbolista.id];
+      case 'DF':
+        return selectedDefenders >= this.maxDefenders && !this.selectedPlayers[futbolista.id];
+      case 'MC':
+        return selectedMidfielders >= this.maxMidfielders && !this.selectedPlayers[futbolista.id];
+      case 'DL':
+        return selectedForwards >= this.maxForwards && !this.selectedPlayers[futbolista.id];
+      default:
+        return false;
+    }
+  }
+
+  removeSeleccionado(futbolista: Jugador) {
+    this.selectedPlayers[futbolista.id] = false;
   }
 
   guardarCambios() {
@@ -119,15 +187,21 @@ export class EditarPlantillaComponent implements OnInit {
     console.log('Selected player IDs:', selectedIds);
     console.log('User ID:', this.user.user_id);
 
-    if (this.user && selectedIds.length === this.maxSelectedPlayers) {
+    const selectedGoalkeepers = this.getSelectedGoalkeepers();
+
+    if (this.user && selectedIds.length === this.maxSelectedPlayers && selectedGoalkeepers === this.maxGoalkeepers) {
       this.jugadoresPosesionService.actualizarJugadores(this.user.user_id, selectedIds).subscribe(
         response => {
           console.log('Jugadores actualizados correctamente:', response);
+          alert('Jugadores actualizados correctamente');
         },
         error => {
           console.error('Error al actualizar jugadores:', error);
+          alert('Error al actualizar jugadores');
         }
       );
+    } else {
+      alert('Debes seleccionar 11 jugadores incluyendo 1 portero');
     }
   }
 
