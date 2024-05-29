@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Usuario } from '../models/usuario';
 import { environment } from '../../environments/environment';
 import { map } from 'rxjs/operators';
+import { AuthService } from './auth-service.service';
 
 @Injectable({
   providedIn: 'root',
@@ -11,10 +12,13 @@ import { map } from 'rxjs/operators';
 export class UsuariosService {
   private apiUrl = `${environment.rutaApi}`;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
   getUsuarios(): Observable<Usuario[]> {
-    return this.http.get<any>(this.apiUrl+'usuarios').pipe(
+    const token = this.authService.getToken();
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.http.get<any>(this.apiUrl+'usuarios', {headers}).pipe(
       map((response: any) => {
         const data = response.data;
         if (Array.isArray(data)) {
@@ -39,17 +43,18 @@ export class UsuariosService {
   }
 
   getNombreEquipo(equipo_id: number): Observable<string> {
+    const token = this.authService.getToken();
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
     return this.http
-      .get<any>(`${environment.rutaApi}equipos/${equipo_id}`)
+      .get<any>(`${environment.rutaApi}equipos/${equipo_id}`, {headers})
       .pipe(map((equipo: any) => equipo.nombre));
   }
 
   updateSpecificValues(id: number, changes: any, accessToken: string): Observable<any> {
     const url = `${this.apiUrl}usuarios/update-values/${id}`;
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${accessToken}`,
-      'Content-Type': 'application/json'
-    });
+    const token = this.authService.getToken();
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
 
     return this.http.put(url, changes, { headers });
   }
