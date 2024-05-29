@@ -1,9 +1,10 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Equipo } from '../models/equipo';
 import { environment } from '../../environments/environment';
 import { map } from 'rxjs/operators';
+import { AuthService } from './auth-service.service';
 
 @Injectable({
   providedIn: 'root',
@@ -11,10 +12,12 @@ import { map } from 'rxjs/operators';
 export class EquiposService {
   private apiUrl = `${environment.rutaApi}equipos`;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,  private authService: AuthService) {}
 
   getEquipos(): Observable<Equipo[]> {
-    return this.http.get<any>(this.apiUrl).pipe(
+    const token = this.authService.getToken();
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get<any>(this.apiUrl, { headers}).pipe(
       map((response: any) => {
         const data = response.data;
         if (Array.isArray(data)) {
