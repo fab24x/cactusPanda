@@ -36,6 +36,7 @@ import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { LoginMisterComponent } from './login-mister/login-mister.component';
 import { EditarUsuarioComponent } from './editar-usuario/editar-usuario.component';
 import { EditarPlantillaComponent } from './editar-plantilla/editar-plantilla.component';
+import { MercadoComponent } from './mercado/mercado.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { EditarPlantillaComponent } from './editar-plantilla/editar-plantilla.co
     LoginMisterComponent,
     EditarUsuarioComponent,
     EditarPlantillaComponent,
+    MercadoComponent,
   ],
   imports: [
     BrowserModule,

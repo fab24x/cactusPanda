@@ -1,48 +1,50 @@
-<div class="bg-light p-5">
+<div class="bg-light">
   <h1 *ngIf="players.length > 0" class="text-center mb-3 text-dark h1 fw-semibold">Ranking jugadores</h1>
   <div *ngIf="players.length > 0" class="d-flex justify-content-center align-items-center">
     <p class="w-50 text-center">Bienvenidos al ranking de los 50 mejores jugadores de la <span class="fw-bold">Jornada {{players[0].jornada}}</span>. Aquí encontrarás a los jugadores más destacados, con sus puntuaciones y contribuciones en el campo. ¡Descubre quiénes brillaron esta jornada!</p>
   </div>
- 
-  <table *ngIf="players.length > 0" class="table table-light table-striped">
-    <thead>
-      <tr>
-        <th scope="col"></th>
-        <th scope="col">Nombre del jugador</th>
-        <th scope="col" class="text-center">Puntos de la jornada</th>
-        <th scope="col" class="text-center">Puntos de la jornada predicción</th>
-        <th scope="col" class="text-center">Precio jugador</th>
-        <th scope="col" class="text-center">Predicción de precio jugador</th>
-        <th scope="col">Visitar</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let player of players; let i = index">
-        <td class="index-td">
-          <span class="d-flex justify-content-center align-items-center" [ngClass]="{'gold': i === 0, 'silver': i === 1, 'bronze': i === 2}">
-            {{i + 1}}
-          </span>
-        </td>
-        <td>
-          <img src="https://cdn.gomister.com/file/cdn-common/players/{{player.id_jugador}}.png?version=20231222225612" height="40" alt="">
-          {{ player.nombre_del_jugador }}
-        </td>
-        <td class="text-center">{{ player.puntos_jornada }}</td>
-        <td class="text-center">
+
+  <div class="table-responsive">
+    <table *ngIf="players.length > 0" class="table table-light table-striped">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">Nombre del jugador</th>
+          <th scope="col" class="text-center">Puntos de la jornada</th>
+          <th scope="col" class="text-center">Puntos de la jornada predicción</th>
+          <th scope="col" class="text-center">Precio jugador</th>
+          <th scope="col" class="text-center">Predicción de precio jugador</th>
+          <th scope="col">Visitar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let player of players; let i = index">
+          <td class="index-td">
+            <span class="d-flex justify-content-center align-items-center" [ngClass]="{'gold': i === 0, 'silver': i === 1, 'bronze': i === 2}">
+              {{i + 1}}
+            </span>
+          </td>
+          <td>
+            <img src="https://cdn.gomister.com/file/cdn-common/players/{{player.id_jugador}}.png?version=20231222225612" height="40" alt="">
+            {{ player.nombre_del_jugador }}
+          </td>
+          <td class="text-center">{{ player.puntos_jornada }}</td>
+          <td class="text-center">
             <span [ngClass]="getComparisonClass(player.puntos_jornada.toString(), player.puntos_jornada_prediccion.toString())">
-            {{ player.puntos_jornada_prediccion }}
-            <i [ngClass]="getComparisonIcon(player.puntos_jornada.toString(), player.puntos_jornada_prediccion.toString())" class="bi"></i>
-          </span>
-        </td>
-        <td class="text-center">{{ player.precio_jugador }}</td>
-        <td class="text-center">
-          <span [ngClass]="getComparisonClass(player.precio_jugador.toString(), player.prediccion_precio_jugador.toString())">
-            {{ player.prediccion_precio_jugador }}
-            <i [ngClass]="getComparisonIcon(player.precio_jugador.toString(), player.prediccion_precio_jugador.toString())" class="bi"></i>
-          </span>
-        </td>
-        <td><a href="https://mister.mundodeportivo.com/feed#players/{{player.id_jugador}}/" class="btn btn-primary"><i class="bi bi-right"></i> Ver jugador</a></td>
-      </tr>
-    </tbody>      
-  </table>
+              {{ player.puntos_jornada_prediccion }}
+              <i [ngClass]="getComparisonIcon(player.puntos_jornada.toString(), player.puntos_jornada_prediccion.toString())" class="bi"></i>
+            </span>
+          </td>
+          <td class="text-center">{{ player.precio_jugador }}</td>
+          <td class="text-center">
+            <span [ngClass]="getComparisonClass(player.precio_jugador.toString(), player.prediccion_precio_jugador.toString())">
+              {{ player.prediccion_precio_jugador }}
+              <i [ngClass]="getComparisonIcon(player.precio_jugador.toString(), player.prediccion_precio_jugador.toString())" class="bi"></i>
+            </span>
+          </td>
+          <td><a href="https://mister.mundodeportivo.com/feed#players/{{player.id_jugador}}/" class="btn btn-primary"><i class="bi bi-right"></i> Ver jugador</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
