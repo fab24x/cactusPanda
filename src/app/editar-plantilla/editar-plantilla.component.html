@@ -39,6 +39,7 @@ Cuando hayas terminado presiona en <span class="fw-bold">Guardar cambios</span><
   <ul class="list-group my-3">
     <li *ngFor="let futbolista of selectedFutbolistas" class="list-group-item d-flex justify-content-between align-items-center">
       <div>
+        <button class="btn btn-close btn-sm mr-3" (click)="removeSeleccionado(futbolista)"></button>
         <img class="mr-3" src="https://cdn.gomister.com/file/cdn-common/players/{{futbolista.id_web}}.png?" height="30" alt="">
         {{ futbolista.nombre }}
       </div>
@@ -50,6 +51,6 @@ Cuando hayas terminado presiona en <span class="fw-bold">Guardar cambios</span><
   </ul>
 
   <div class="d-flex justify-content-center align-items-center mb-4">
-    <button class="btn btn-primary" (click)="guardarCambios()" [disabled]="getSelectedCount() !== maxSelectedPlayers">Guardar cambios</button>
+    <button class="btn btn-primary" (click)="guardarCambios()" [disabled]="getSelectedCount() !== maxSelectedPlayers || getSelectedGoalkeepers() !== maxGoalkeepers">Guardar cambios</button>
   </div>
 </div>
