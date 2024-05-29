@@ -1,0 +1,55 @@
+<button class="btn btn-primary" routerLink="/plantilla">Volver</button>
+<h1 class="text-center">Editar plantilla</h1>
+<p class="text-center">A continuación selecciona los jugadores que tienes en tu plantilla de Fantasy</p>
+<p class="text-center mb-5">Los jugadores seleccionados aparecerán en <span class="fw-bold">Jugadores seleccionados</span>.
+Cuando hayas terminado presiona en <span class="fw-bold">Guardar cambios</span></p>
+
+<div class="container mt-3">
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="Buscar jugadores" [(ngModel)]="searchText">
+  </div>
+
+  <ul class="list-group mt-3">
+    <li *ngFor="let futbolista of filteredFutbolistas" class="list-group-item d-flex justify-content-between align-items-center">
+      <div>
+        <img class="mr-3" src="https://cdn.gomister.com/file/cdn-common/players/{{futbolista.id_web}}.png?" height="30" alt="">
+        {{ futbolista.nombre }}
+      </div>
+      <div>
+        <span class="text-white rounded-3 p-2" [class]="getPosicionClass(futbolista.posicion)">{{futbolista.posicion}}</span>
+        <img class="mx-3" src="https://cdn.gomister.com/file/cdn-common/teams/{{futbolista.equipo_id}}.png" height="30" alt="">
+        <input type="checkbox" [checked]="selectedPlayers[futbolista.id]" (change)="toggleSeleccionado(futbolista)" [disabled]="isDisabled(futbolista)">
+      </div>
+    </li>
+  </ul>
+
+  <nav aria-label="Page navigation" class="mt-3">
+    <ul class="pagination justify-content-center">
+      <li class="page-item" [class.disabled]="currentPage === 1">
+        <a class="page-link cursor-pointer" (click)="previousPage()">Anterior</a>
+      </li>
+      <li class="page-item" [class.disabled]="(currentPage * itemsPerPage) >= players.length">
+        <a class="page-link cursor-pointer" (click)="nextPage()">Siguiente</a>
+      </li>
+    </ul>
+  </nav>
+
+  <h2 class="mt-5 text-center">Jugadores seleccionados ({{ getSelectedCount() }}/11)</h2>
+  <p class="text-center mb-5">Aquí se mostrarán los jugadores seleccionados</p>
+  <ul class="list-group my-3">
+    <li *ngFor="let futbolista of selectedFutbolistas" class="list-group-item d-flex justify-content-between align-items-center">
+      <div>
+        <img class="mr-3" src="https://cdn.gomister.com/file/cdn-common/players/{{futbolista.id_web}}.png?" height="30" alt="">
+        {{ futbolista.nombre }}
+      </div>
+      <div>
+        <span class="text-white rounded-3 p-2" [class]="getPosicionClass(futbolista.posicion)">{{futbolista.posicion}}</span>
+        <img class="mx-3" src="https://cdn.gomister.com/file/cdn-common/teams/{{futbolista.equipo_id}}.png" height="30" alt="">
+      </div>
+    </li>
+  </ul>
+
+  <div class="d-flex justify-content-center align-items-center mb-4">
+    <button class="btn btn-primary" (click)="guardarCambios()" [disabled]="getSelectedCount() !== maxSelectedPlayers">Guardar cambios</button>
+  </div>
+</div>

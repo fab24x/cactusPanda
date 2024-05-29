@@ -34,6 +34,8 @@ import { TablaRankingComponent } from './tabla-ranking/tabla-ranking.component';
 import { PrediccionesComponent } from './predicciones/predicciones.component';
 import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { LoginMisterComponent } from './login-mister/login-mister.component';
+import { EditarUsuarioComponent } from './editar-usuario/editar-usuario.component';
+import { EditarPlantillaComponent } from './editar-plantilla/editar-plantilla.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +55,8 @@ import { LoginMisterComponent } from './login-mister/login-mister.component';
     TablaRankingComponent,
     PrediccionesComponent,
     LoginMisterComponent,
+    EditarUsuarioComponent,
+    EditarPlantillaComponent,
   ],
   imports: [
     BrowserModule,
