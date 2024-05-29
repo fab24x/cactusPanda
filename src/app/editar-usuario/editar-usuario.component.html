@@ -1,0 +1,47 @@
+<div class="d-flex justify-content-center align-items-center flex-column w-100 bg-light ">
+  <h1 class="text-center">Editar Usuario</h1>
+  <p>Edite los valores que quiera cambiar y presione en <span class="fw-bold">Guardar cambios</span></p>
+  <form [formGroup]="angForm" (ngSubmit)="onSubmit()" novalidate class="w-25 bg-white p-3 rounded-3">
+      <!-- <div *ngIf="camposVacios" class="alert alert-danger" role="alert">
+        Todos los campos son obligatorios para registrarse
+      </div> -->
+      <!-- <div *ngIf="menorEdad" class="alert alert-danger" role="alert">
+        Necesita ser mayor de 18 años para registrarse        </div> -->
+      <!-- Campos de registro como nombre de usuario, email, contraseña, etc. -->
+      <div class="mb-2">
+        <label for="nombre_de_usuario" class="text-black mb-1 w-100"><i class="bi bi-person-fill"></i> Nombre de Usuario:</label>
+        <input type="text" id="nombre_de_usuario" class="form-control w-100 mb-3" formControlName="nombre_de_usuario">
+      </div>
+      <div class="mb-2 w-100">
+        <label for="correo" class="text-black mb-1"><i class="bi bi-envelope-fill"></i> Email:</label>
+        <input type="email" id="correo" class="form-control w-100 mb-3" formControlName="correo">
+      </div>
+      <p class="mt-5 fw-bold">Cambiar contraseña</p>
+      <div class="form-group mb-2 w-100">
+        <label for="current_pass" class="text-black mb-1"><i class="bi bi-lock-fill"></i> Contraseña actual:</label>
+        <input type="password" id="current_pass" class="form-control w-100 mb-3" formControlName="current_pass">
+      </div>
+      <div class="form-group mb-2 w-100 mb-5">
+        <label for="new_pass" class="text-black mb-1"><i class="bi bi-lock-fill"></i> Contraseña nueva:</label>
+        <input type="password" id="new_pass" class="form-control w-100 mb-3" formControlName="new_pass">
+      </div>
+      <p class="mt-5 fw-bold">Datos personales</p>
+      <div class="form-group mb-2 w-100">
+        <label for="nombre" class="text-black mb-1"><i class="bi bi-person-fill"></i> Nombre:</label>
+        <input type="text" id="nombre" class="form-control w-100 mb-3" formControlName="nombre">
+      </div>
+      <div class="form-group mb-2 w-100">
+        <label for="apellido" class="text-black mb-1"><i class="bi bi-person-fill"></i> Apellidos:</label>
+        <input type="text" id="apellido" class="form-control w-100 mb-3" formControlName="apellido">
+      </div>
+      <div class="form-group mb-2 w-100">
+        <label for="fecha_nacimiento" class="text-black mb-1"><i class="bi bi-calendar-fill"></i> Fecha de nacimiento:</label>
+        <div class="input-group">
+          <input type="date" class="form-control" formControlName="fecha_nacimiento" />
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary w-100 mt-4">Guardar cambios</button>
+      <br>
+      <p class="text-center mt-2">*Si quieres cambiar el <span class="fw-bold">usuario</span> o el <span class="fw-bold">correo electrónico</span>, puedes cambiarlos contactándonos <a class="link-primary btn-link" routerLink="/contacto">aquí</a></p>
+    </form>
+</div>
