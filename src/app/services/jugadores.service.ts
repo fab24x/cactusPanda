@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Jugador } from '../models/jugador';
 import { environment } from '../../environments/environment';
-import { map } from 'rxjs/operators';
+import { map, tap} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -15,24 +15,22 @@ export class JugadoresService {
 
   getJugadores(): Observable<Jugador[]> {
     return this.http.get<any>(this.apiUrl).pipe(
-      map((response: any) => {
+      map(response => {
         const data = response.data;
-        if (Array.isArray(data)) {
-          return data.map(
-            (item) =>
-              new Jugador(
-                item.id,
-                item.id_web,
-                item.nombre,
-                item.equipo_id,
-                item.posicion
-              )
-          );
-        } else {
-          console.error('La respuesta del servidor no es un array:', response);
-          return []; // Devuelve un array vacío si la respuesta no es un array
-        }
+        return data.map((item: any) => this.mapToJugador(item));
       })
+    );
+  }
+
+  private mapToJugador(data: any): Jugador {
+    return new Jugador(
+      data.id,
+      data.id_web,
+      data.nombre_del_jugador,
+      data.id_equipo,
+      data.posicion,
+      data.equipo_id_web,
+      data.nombreEquipo
     );
   }
 
