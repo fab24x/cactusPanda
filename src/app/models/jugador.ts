@@ -1,22 +1,11 @@
 export class Jugador {
-  id: number;
-  id_web: number;
-  nombre: string;
-  equipo_id: number;
-  posicion: string;
-  nombreEquipo?: string; // Propiedad adicional
-
   constructor(
-    id: number = 0,
-    id_web: number = 0,
-    nombre: string = '',
-    equipo_id: number = 0,
-    posicion: string = ''
-  ) {
-    this.id = id;
-    this.id_web = id_web;
-    this.nombre = nombre;
-    this.equipo_id = equipo_id;
-    this.posicion = posicion;
-  }
+    public id: number = 0,
+    public id_web: number = 0,
+    public nombre_del_jugador: string = '',
+    public id_equipo: number = 0,
+    public posicion: string = '',
+    public equipo_id_web: number = 0,
+    public nombreEquipo?: string,
+  ) {}
 }

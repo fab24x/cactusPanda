@@ -48,4 +48,24 @@ export class PlantillaComponent implements OnInit {
         return '';
     }
   }
+
+  getPrecioClass(prediPrecio: number, ultimoPrediPrecio: number): string {
+    if (prediPrecio > ultimoPrediPrecio) {
+      return 'text-success bi bi-arrow-up';
+    } else if (prediPrecio < ultimoPrediPrecio) {
+      return 'text-danger bi bi-arrow-down';
+    } else {
+      return 'text-dark';
+    }
+  }
+
+  getPuntuacionClass(prediPuntuacion: number, puntosJornada: number): string {
+    if (prediPuntuacion > puntosJornada) {
+      return 'text-success bi bi-arrow-up';
+    } else if (prediPuntuacion < puntosJornada) {
+      return 'text-danger bi bi-arrow-down';
+    } else {
+      return 'text-dark';
+    }
+  }
 }

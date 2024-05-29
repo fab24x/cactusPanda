@@ -21,7 +21,7 @@ export class EditarPlantillaComponent implements OnInit {
   maxDefenders: number = 4;
   maxMidfielders: number = 4;
   maxForwards: number = 4;
-  playersActuales: any;
+  playersActuales: Jugador[] = [];
 
   constructor(
     private jugadoresService: JugadoresService,
@@ -51,6 +51,8 @@ export class EditarPlantillaComponent implements OnInit {
     this.jugadoresService.getJugadores().subscribe(
       (data: Jugador[]) => {
         this.players = data;
+        console.log(data);
+        console.log("Jugadores totales");
         this.initializeSelectedPlayers();
       },
       (error) => {
@@ -83,10 +85,9 @@ export class EditarPlantillaComponent implements OnInit {
   }
 
   get filteredFutbolistas() {
-    const filtered = this.players.filter(f => f.nombre.toLowerCase().includes(this.searchText.toLowerCase()));
-    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
-    const endIndex = startIndex + this.itemsPerPage;
-    return filtered.slice(startIndex, endIndex);
+    return this.players
+      .filter(f => f.nombre_del_jugador && f.nombre_del_jugador.toLowerCase().includes(this.searchText.toLowerCase()))
+      .slice((this.currentPage - 1) * this.itemsPerPage, this.currentPage * this.itemsPerPage);
   }
 
   get selectedFutbolistas() {
