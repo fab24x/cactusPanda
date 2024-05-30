@@ -37,6 +37,7 @@ import { LoginMisterComponent } from './login-mister/login-mister.component';
 import { EditarUsuarioComponent } from './editar-usuario/editar-usuario.component';
 import { EditarPlantillaComponent } from './editar-plantilla/editar-plantilla.component';
 import { MercadoComponent } from './mercado/mercado.component';
+import { VistaMercadoComponent } from './vista-mercado/vista-mercado.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { MercadoComponent } from './mercado/mercado.component';
     EditarUsuarioComponent,
     EditarPlantillaComponent,
     MercadoComponent,
+    VistaMercadoComponent,
   ],
   imports: [
     BrowserModule,

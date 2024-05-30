@@ -16,6 +16,7 @@ import { PrediccionesComponent } from './predicciones/predicciones.component';
 import { LoginMisterComponent } from './login-mister/login-mister.component';
 import { EditarUsuarioComponent } from './editar-usuario/editar-usuario.component';
 import { EditarPlantillaComponent } from './editar-plantilla/editar-plantilla.component';
+import { VistaMercadoComponent } from './vista-mercado/vista-mercado.component';
 
 const routes: Routes = [
   {path: '', component: LandingPageComponent},
@@ -33,6 +34,7 @@ const routes: Routes = [
   {path: 'plantilla/editar-plantilla', component: EditarPlantillaComponent},
   {path: 'login-mister', component: LoginMisterComponent},
   {path: 'editar-usuario', component: EditarUsuarioComponent},
+  {path: 'mercado', component: VistaMercadoComponent},
   {path: '**', component: PageNotFoundComponent},
 
 ];

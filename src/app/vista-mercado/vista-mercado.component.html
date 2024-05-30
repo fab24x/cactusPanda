@@ -1,0 +1,34 @@
+<div class="market-container">
+    <div class="filter-container">
+      <label for="sort">Ordenar por:</label>
+      <select id="sort" [(ngModel)]="selectedSort" (change)="sortTable()">
+        <option value="priceAsc">Precio: de más barato a más caro</option>
+        <option value="priceDesc">Precio: de más caro a más barato</option>
+        <option value="nameAsc">Nombre: A-Z</option>
+        <option value="nameDesc">Nombre: Z-A</option>
+      </select>
+      <button (click)="refrescarPagina()" class="refresh-button">Refrescar</button>
+    </div>
+    
+    <table class="market-table">
+      <thead>
+        <tr>
+          <th>Jugador</th>
+          <th>Posición</th>
+          
+          <th>Precio</th>
+          <th>Predicción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of items" (click)="selectItem(item)" [class.highlight]="selectedItem === item" (mouseover)="hoverItem(item)" (mouseleave)="hoverItem(null)">
+          <td>{{ item.name }}</td>
+          <td>{{ item.posicion }}</td>
+          <td>{{ item.price | currency }}</td>
+        
+          <td>{{ item.prediccion }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

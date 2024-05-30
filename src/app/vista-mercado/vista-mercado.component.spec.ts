@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MercadoComponent } from './mercado.component';
+import { VistaMercadoComponent } from './vista-mercado.component';
 
-describe('MercadoComponent', () => {
-  let component: MercadoComponent;
-  let fixture: ComponentFixture<MercadoComponent>;
+describe('VistaMercadoComponent', () => {
+  let component: VistaMercadoComponent;
+  let fixture: ComponentFixture<VistaMercadoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [MercadoComponent]
+      declarations: [VistaMercadoComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(MercadoComponent);
+    fixture = TestBed.createComponent(VistaMercadoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

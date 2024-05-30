@@ -1,0 +1,75 @@
+$background-color: #3f3d3d;
+$table-background-color: #2a2a2a;
+$table-header-background-color: #3d3d3d;
+$table-border-color: #444;
+$table-hover-color: #555;
+$table-highlight-color: #666;
+$text-color: #fff;
+$highlight-text-color: #ff0;
+
+$button-hover-color: #45a049;
+.market-container {
+  background-color: $background-color;
+  color: $text-color;
+  padding: 20px;
+  min-height: 100vh;
+
+  .filter-container {
+    margin-bottom: 20px;
+
+    label {
+      margin-right: 10px;
+    }
+
+    select {
+      background-color: $table-background-color;
+      color: $text-color;
+      border: 1px solid $table-border-color;
+      padding: 5px;
+      border-radius: 5px;
+    }
+    .refresh-button {
+        margin-left: 10px;
+        padding: 10px 20px;
+        background-color: #748f12;
+        color: $text-color;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+  
+        &:hover {
+          background-color: $button-hover-color;
+        }
+      }
+  }
+
+  .market-table {
+    width: 100%;
+    border-collapse: collapse;
+
+    th, td {
+      border: 1px solid $table-border-color;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: $table-header-background-color;
+      color: $text-color;
+    }
+
+    tbody tr {
+      background-color: $table-background-color;
+
+      &:hover {
+        background-color: $table-hover-color;
+      }
+
+      &.highlight {
+        background-color: $table-highlight-color;
+        color: $highlight-text-color;
+      }
+    }
+  }
+}
