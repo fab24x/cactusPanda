@@ -5,7 +5,7 @@
 Cuando hayas terminado presiona en <span class="fw-bold">Guardar cambios</span></p>
 
 <div *ngIf="loading" class="d-flex justify-content-center align-items-center w-100 h-100">
-  <p>Cargando datos...</p>
+  <p><i class="bi bi-clock-fill"></i> Cargando datos...</p>
 </div>
 
 <div *ngIf="!loading" class="container mt-3">
@@ -42,7 +42,7 @@ Cuando hayas terminado presiona en <span class="fw-bold">Guardar cambios</span><
   <p class="text-center mb-5">Aquí se mostrarán los jugadores seleccionados</p>
 
   <div *ngIf="loadingSelectedPlayers" class="d-flex justify-content-center align-items-center w-100 h-100">
-    <p>Cargando jugadores seleccionados...</p>
+    <p><i class="bi bi-clock-fill"></i> Cargando jugadores seleccionados...</p>
   </div>
 
   <ul *ngIf="!loadingSelectedPlayers" class="list-group my-3">
