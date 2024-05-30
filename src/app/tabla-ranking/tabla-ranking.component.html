@@ -1,14 +1,16 @@
 <div class="bg-light">
   <h1 class="text-center mb-3 text-dark h1 fw-semibold">Ranking jugadores</h1>
   <div class="d-flex justify-content-center align-items-center">
-    <p class="w-50 text-center">Bienvenidos al ranking de los 50 mejores jugadores de la <span class="fw-bold">Jornada {{players[0].jornada}}</span>. Aquí encontrarás a los jugadores más destacados, con sus puntuaciones y contribuciones en el campo. ¡Descubre quiénes brillaron esta jornada!</p>
+    <p class="w-50 text-center">Bienvenidos al ranking de los 50 mejores jugadores de la <span class="fw-bold">Jornada {{players[0]?.jornada}}</span>. Aquí encontrarás a los jugadores más destacados, con sus puntuaciones y contribuciones en el campo. ¡Descubre quiénes brillaron esta jornada!</p>
   </div>
 
+  <!-- Mensaje de cargando datos -->
   <div *ngIf="isLoading" class="text-center">
-    <p class="text-dark h1 fw-semibold">Los datos se están cargando<span class="loading-dots"></span></p>
+    <p class="text-secondary">Cargando datos, por favor espera...</p>
   </div>
 
-  <div *ngIf="!isLoading && players.length > 0" class="table-responsive">
+  <!-- Tabla de jugadores -->
+  <div class="table-responsive" *ngIf="!isLoading">
     <table class="table table-light table-striped">
       <thead>
         <tr>
