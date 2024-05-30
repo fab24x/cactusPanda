@@ -22,6 +22,8 @@ export class EditarPlantillaComponent implements OnInit {
   maxMidfielders: number = 4;
   maxForwards: number = 4;
   playersActuales: Jugador[] = [];
+  loading: boolean = true;  // Propiedad para el estado de carga
+  loadingSelectedPlayers: boolean = true;  // Propiedad para el estado de carga de jugadores seleccionados
 
   constructor(
     private jugadoresService: JugadoresService,
@@ -40,9 +42,13 @@ export class EditarPlantillaComponent implements OnInit {
       (data: Jugador[]) => {
         this.playersActuales = data;
         this.initializeSelectedPlayers();
+        this.loading = false;  // Desactiva el estado de carga cuando los datos están listos
+        this.loadingSelectedPlayers = false;  // Desactiva el estado de carga de jugadores seleccionados cuando los datos están listos
       },
       (error) => {
         console.error('Error al cargar jugadores:', error);
+        this.loading = false;  // Desactiva el estado de carga en caso de error
+        this.loadingSelectedPlayers = false;  // Desactiva el estado de carga de jugadores seleccionados en caso de error
       }
     );
   }
@@ -54,9 +60,11 @@ export class EditarPlantillaComponent implements OnInit {
         console.log(data);
         console.log("Jugadores totales");
         this.initializeSelectedPlayers();
+        this.loading = false;  // Desactiva el estado de carga cuando los datos están listos
       },
       (error) => {
         console.error('Error al cargar jugadores:', error);
+        this.loading = false;  // Desactiva el estado de carga en caso de error
       }
     );
   }

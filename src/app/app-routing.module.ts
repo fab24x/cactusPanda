@@ -18,6 +18,7 @@ import { EditarUsuarioComponent } from './editar-usuario/editar-usuario.componen
 import { EditarPlantillaComponent } from './editar-plantilla/editar-plantilla.component';
 import { MercadoJugadorComponent } from './mercado-jugador/mercado-jugador.component';
 
+
 const routes: Routes = [
   {path: '', component: LandingPageComponent},
   {path: 'login', component: LoginPageComponent},

@@ -10,6 +10,7 @@ import { JugadoresPosesionService } from '../services/jugadores-posesion.service
 })
 export class PlantillaComponent implements OnInit {
   jugadores: any;
+  loading: boolean = true;  // Propiedad para el estado de carga
 
   constructor(private jugadoresPosesionService: JugadoresPosesionService) {}
 
@@ -21,10 +22,12 @@ export class PlantillaComponent implements OnInit {
     this.jugadoresPosesionService.getJugadoresPosesion().subscribe({
       next: (response: Jugador[]) => {
         this.jugadores = this.ordenarJugadores(response);
+        this.loading = false;  // Desactiva el estado de carga cuando los datos están listos
         console.log(this.jugadores);
       },
       error: (error: any) => {
         console.error('Hubo un error al cargar los jugadores:', error);
+        this.loading = false;  // Desactiva el estado de carga en caso de error
       },
     });
   }

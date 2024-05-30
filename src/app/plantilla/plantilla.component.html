@@ -1,6 +1,9 @@
 <h2 class="text-center">Tu plantilla</h2>
 <p class="text-center mb-5">Para editar la plantilla, pulse <a class="link-primary btn-link" routerLink="editar-plantilla">aquí</a></p>
-<div class="w-100 d-flex justify-content-center main-div gap-5 mb-4">
+<div *ngIf="loading" class="d-flex justify-content-center align-items-center w-100 h-100">
+  <p>Cargando datos...</p>
+</div>
+<div *ngIf="!loading" class="w-100 d-flex justify-content-center main-div gap-5 mb-4">
   <div class="campo-futbol position-relative mx-4">
     <img class="rounded-5 d-block" src="../../assets/campo-futbol.jpg" alt="" />
     <ng-container *ngFor="let jugador of jugadores; let i = index">
@@ -21,7 +24,6 @@
         <p class="text-center text-white ">{{ jugador.nombre_del_jugador }}</p>
       </div>
     </ng-container>
-    
   </div>
   <div
     class="d-flex flex-column justify-content-center align-items-center gap-3 h-100"
@@ -61,7 +63,6 @@
               <span [ngClass]="getPuntuacionClass(jugador.prediPuntuacion, jugador.ultimoPrediJugador?.puntos_jornada)">
                 {{ jugador.prediPuntuacion }}
               </span>
-
             </p>
           </div>
           <a
