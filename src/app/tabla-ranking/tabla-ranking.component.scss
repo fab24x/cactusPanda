@@ -29,3 +29,33 @@
 .index-td {
   width: 20px;
 }
+
+.loading-dots::after {
+  content: '...';
+  display: inline-block;
+  width: 0;
+  overflow: hidden;
+  vertical-align: bottom;
+  animation: ellipsis steps(4, end) 2s infinite;
+}
+
+@keyframes ellipsis {
+  0% {
+    width: 0;
+  }
+  25% {
+    width: 0.25em;
+  }
+  50% {
+    width: 0.5em;
+  }
+  75% {
+    width: 0.75em;
+  }
+  100% {
+    width: 1em;
+  }
+}
+
+
+

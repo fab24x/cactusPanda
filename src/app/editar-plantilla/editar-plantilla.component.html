@@ -4,7 +4,11 @@
 <p class="text-center mb-5">Los jugadores seleccionados aparecerán en <span class="fw-bold">Jugadores seleccionados</span>.
 Cuando hayas terminado presiona en <span class="fw-bold">Guardar cambios</span></p>
 
-<div class="container mt-3">
+<div *ngIf="loading" class="d-flex justify-content-center align-items-center w-100 h-100">
+  <p>Cargando datos...</p>
+</div>
+
+<div *ngIf="!loading" class="container mt-3">
   <div class="form-group">
     <input type="text" class="form-control" placeholder="Buscar jugadores" [(ngModel)]="searchText">
   </div>
@@ -36,7 +40,12 @@ Cuando hayas terminado presiona en <span class="fw-bold">Guardar cambios</span><
 
   <h2 class="mt-5 text-center">Jugadores seleccionados ({{ getSelectedCount() }}/11)</h2>
   <p class="text-center mb-5">Aquí se mostrarán los jugadores seleccionados</p>
-  <ul class="list-group my-3">
+
+  <div *ngIf="loadingSelectedPlayers" class="d-flex justify-content-center align-items-center w-100 h-100">
+    <p>Cargando jugadores seleccionados...</p>
+  </div>
+
+  <ul *ngIf="!loadingSelectedPlayers" class="list-group my-3">
     <li *ngFor="let futbolista of selectedFutbolistas" class="list-group-item d-flex justify-content-between align-items-center">
       <div>
         <button class="btn btn-close btn-sm mr-3" (click)="removeSeleccionado(futbolista)"></button>

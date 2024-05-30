@@ -10,13 +10,18 @@ import { PrediJugadorService } from '../services/predi-jugador.service';
 export class TablaRankingComponent implements OnInit {
 
   players: PrediJugador[] = [];
+  isLoading: boolean = true;
 
   constructor(private prediJugadorService: PrediJugadorService) {}
 
   ngOnInit(): void {
     this.prediJugadorService.getTopPlayers().subscribe((data: PrediJugador[]) => {
       this.players = data;
+      this.isLoading = false;
       console.log('Players data:', this.players);
+    }, error => {
+      console.error('Error loading players:', error);
+      this.isLoading = false;
     });
   }
 
