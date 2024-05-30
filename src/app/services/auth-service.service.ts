@@ -63,7 +63,7 @@ export class AuthService {
           localStorage.setItem('user', JSON.stringify(response.user));
           localStorage.setItem('nombre', response.user.nombre);
           this.loggedIn.next(true);
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/login-mister']);
         }
       })
     );

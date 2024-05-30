@@ -17,17 +17,21 @@ export class JugadoresPosesionService {
   actualizarJugadores(idUsuario: number, jugadores: number[]): Observable<any> {
     const token = this.getToken();
     const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`,
-      'Content-Type': 'application/json'
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
     });
 
     const body = {
-      id_usuario: idUsuario,
-      jugadores: jugadores
+        id_usuario: idUsuario,
+        jugadores: jugadores
     };
 
-    return this.http.post<any>(this.apiUrl+'actualizar-jugadores', body, { headers });
+    console.log('Payload:', body); // Log para verificar el payload
+
+    return this.http.post<any>(`${this.apiUrl}actualizar-jugadores`, body, { headers });
   }
+
+
 
   getJugadoresPosesion(): Observable<any> {
     const token = this.getToken();

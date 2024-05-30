@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
     this.angForm = this.fb.group({
       nombre_de_usuario: ['', Validators.required],
       correo: ['', [Validators.required, Validators.email]],
-      pass: ['', [Validators.required, Validators.minLength(6)]],
+      pass: ['', [Validators.required, Validators.minLength(8)]],
       nombre: ['', Validators.required],
       apellido: ['', Validators.required],
       fecha_nacimiento: ['', Validators.required],
@@ -39,7 +39,7 @@ export class RegisterComponent implements OnInit {
     }
 
     const { nombre_de_usuario, correo, pass, fecha_nacimiento, nombre, apellido } = this.angForm.value;
-
+    console.log('Contraseña: ' + pass);
     this.authService.register(nombre_de_usuario, correo, pass, fecha_nacimiento, nombre, apellido).subscribe(
       (response: LoginResponse) => {
         console.log('Register exitoso:', response);

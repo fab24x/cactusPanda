@@ -72,6 +72,7 @@ export class EditarPlantillaComponent implements OnInit {
   loadUser(): void {
     this.authService.getUser().subscribe(
       (data: any) => {
+        console.log('Datos usuario', data)
         this.user = data;
       },
       (error) => {
@@ -194,19 +195,23 @@ export class EditarPlantillaComponent implements OnInit {
   guardarCambios() {
     const selectedIds = this.players.filter(player => this.selectedPlayers[player.id]).map(player => player.id);
     console.log('Selected player IDs:', selectedIds);
-    console.log('User ID:', this.user.user_id);
+    console.log('User ID:', this.user.user.id);
 
     const selectedGoalkeepers = this.getSelectedGoalkeepers();
 
     if (this.user && selectedIds.length === this.maxSelectedPlayers && selectedGoalkeepers === this.maxGoalkeepers) {
-      this.jugadoresPosesionService.actualizarJugadores(this.user.user_id, selectedIds).subscribe(
+      this.jugadoresPosesionService.actualizarJugadores(this.user.user.id, selectedIds).subscribe(
         response => {
           console.log('Jugadores actualizados correctamente:', response);
           alert('Jugadores actualizados correctamente');
         },
         error => {
           console.error('Error al actualizar jugadores:', error);
-          alert('Error al actualizar jugadores');
+            // Manejar error de la respuesta
+            if (error.status === 422) {
+                console.error('Errores de validación:', error.error.errors);
+                // Mostrar mensajes de error de validación al usuario
+            }
         }
       );
     } else {
