@@ -5,6 +5,7 @@ import { tap } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { LoginResponse } from '../models/LoginResponse';
 import { Router } from '@angular/router';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -84,7 +85,15 @@ export class AuthService {
   getToken(): string | null {
     return localStorage.getItem('access_token');
   }
-
+  getRolUsuario(): Observable<string> {
+    return this.http.get<{ role: string }>(`${this.apiUrl}/user-role`, {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      }
+    }).pipe(
+      map(response => response.role)
+    );
+  }
   getUser(): Observable<any> {
     const token = this.getToken();
     const headers = new HttpHeaders({
