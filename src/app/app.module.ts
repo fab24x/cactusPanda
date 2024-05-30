@@ -36,7 +36,7 @@ import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { LoginMisterComponent } from './login-mister/login-mister.component';
 import { EditarUsuarioComponent } from './editar-usuario/editar-usuario.component';
 import { EditarPlantillaComponent } from './editar-plantilla/editar-plantilla.component';
-import { MercadoComponent } from './mercado/mercado.component';
+
 import { VistaMercadoComponent } from './vista-mercado/vista-mercado.component';
 
 @NgModule({
@@ -59,7 +59,7 @@ import { VistaMercadoComponent } from './vista-mercado/vista-mercado.component';
     LoginMisterComponent,
     EditarUsuarioComponent,
     EditarPlantillaComponent,
-    MercadoComponent,
+
     VistaMercadoComponent,
   ],
   imports: [
