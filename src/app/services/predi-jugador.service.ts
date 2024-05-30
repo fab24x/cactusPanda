@@ -17,9 +17,13 @@ export class PrediJugadorService {
   getTopPlayers(): Observable<PrediJugador[]> {
     const token = this.authService.getToken();
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-
-    console.log(this.http.get<PrediJugador[]>(this.apiUrl));
     return this.http.get<PrediJugador[]>(this.apiUrl, { headers });
   }
-  
+
+  getRandomPlayers(count: number): Observable<PrediJugador[]> {
+    const token = this.authService.getToken();
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    const url = `${environment.rutaApi}jugadores-aleatorios/${count}`;
+    return this.http.get<PrediJugador[]>(url, { headers });
+  }
 }

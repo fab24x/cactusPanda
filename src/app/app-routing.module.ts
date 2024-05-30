@@ -16,12 +16,14 @@ import { PrediccionesComponent } from './predicciones/predicciones.component';
 import { LoginMisterComponent } from './login-mister/login-mister.component';
 import { EditarUsuarioComponent } from './editar-usuario/editar-usuario.component';
 import { EditarPlantillaComponent } from './editar-plantilla/editar-plantilla.component';
+import { MercadoJugadorComponent } from './mercado-jugador/mercado-jugador.component';
 
 const routes: Routes = [
   {path: '', component: LandingPageComponent},
   {path: 'login', component: LoginPageComponent},
   {path: 'predicciones', component: PrediccionesComponent},
   {path: 'ranking', component: TablaRankingComponent},
+  {path: 'mercado', component: MercadoJugadorComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'admin-panel', component: AdminPanelComponent},
   {path: 'admin-panel/historial-usuarios', component: HistorialUsuariosComponent},
