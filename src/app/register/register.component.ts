@@ -44,7 +44,7 @@ export class RegisterComponent implements OnInit {
       (response: LoginResponse) => {
         console.log('Register exitoso:', response);
         // Redirigir al usuario después de un inicio de sesión exitoso
-        this.router.navigate(['/login-mister']);
+        this.router.navigate(['/plantilla']);
       },
       error => {
         console.log('Error register:', error);
